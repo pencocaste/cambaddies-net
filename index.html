@@ -723,65 +723,47 @@
         <!-- Dropdown Filters -->
         <section class="dropdown-filters">
             <div class="dropdown-filter">
-                <button class="dropdown-filter-btn" id="age-filter-btn">
-                    <span>Select Age</span>
+                <button class="dropdown-filter-btn" id="region-filter-btn">
+                    <span>Region</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </button>
-                <div class="dropdown-menu" id="age-dropdown">
-                    <div class="dropdown-item" data-value="">All Ages</div>
-                    <div class="dropdown-item" data-value="teen">18-22</div>
-                    <div class="dropdown-item" data-value="young">23-30</div>
-                    <div class="dropdown-item" data-value="milf">31-45</div>
-                    <div class="dropdown-item" data-value="mature">46+</div>
-                </div>
-            </div>
-
-            <div class="dropdown-filter">
-                <button class="dropdown-filter-btn" id="sort-filter-btn">
-                    <span>Sort By</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </button>
-                <div class="dropdown-menu" id="sort-dropdown">
-                    <div class="dropdown-item selected" data-value="">Most Popular</div>
-                    <div class="dropdown-item" data-value="new">Newest</div>
-                    <div class="dropdown-item" data-value="hd">HD Only</div>
-                </div>
-            </div>
-
-            <div class="dropdown-filter">
-                <button class="dropdown-filter-btn" id="gender-filter-btn">
-                    <span>Female</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </button>
-                <div class="dropdown-menu" id="gender-dropdown">
-                    <div class="dropdown-item" data-value="">All Genders</div>
-                    <div class="dropdown-item selected" data-value="f">Female</div>
-                    <div class="dropdown-item" data-value="m">Male</div>
-                    <div class="dropdown-item" data-value="c">Couples</div>
-                    <div class="dropdown-item" data-value="t">Trans</div>
-                </div>
-            </div>
-
-            <div class="dropdown-filter">
-                <button class="dropdown-filter-btn" id="location-filter-btn">
-                    <span>Location</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </button>
-                <div class="dropdown-menu" id="location-dropdown">
-                    <div class="dropdown-item selected" data-value="">All Locations</div>
+                <div class="dropdown-menu" id="region-dropdown">
+                    <div class="dropdown-item selected" data-value="">All Regions</div>
                     <div class="dropdown-item" data-value="northamerica">North America</div>
                     <div class="dropdown-item" data-value="southamerica">South America</div>
                     <div class="dropdown-item" data-value="europe_russia">Europe/Russia</div>
                     <div class="dropdown-item" data-value="asia">Asia</div>
                     <div class="dropdown-item" data-value="other">Other</div>
+                </div>
+            </div>
+
+            <div class="dropdown-filter">
+                <button class="dropdown-filter-btn" id="tags-filter-btn">
+                    <span>Popular Tags</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="dropdown-menu" id="tags-dropdown">
+                    <!-- Tags will be populated dynamically based on gender -->
+                </div>
+            </div>
+
+            <div class="dropdown-filter">
+                <button class="dropdown-filter-btn" id="age-filter-btn">
+                    <span>Age</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="dropdown-menu" id="age-dropdown">
+                    <div class="dropdown-item selected" data-value="">All Ages</div>
+                    <div class="dropdown-item" data-value="teen">18-22</div>
+                    <div class="dropdown-item" data-value="young">23-30</div>
+                    <div class="dropdown-item" data-value="milf">31-45</div>
+                    <div class="dropdown-item" data-value="mature">46+</div>
                 </div>
             </div>
         </section>
@@ -996,6 +978,39 @@
         }
 
         function setupDropdownFilters() {
+            // Region filter
+            const regionBtn = document.getElementById('region-filter-btn');
+            const regionDropdown = document.getElementById('region-dropdown');
+
+            regionBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleDropdown(regionBtn, regionDropdown);
+            });
+
+            regionDropdown.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    selectDropdownItem(regionDropdown, this);
+                    regionBtn.querySelector('span').textContent = value ? this.textContent : 'Region';
+                    regionBtn.classList.toggle('active', !!value);
+
+                    // Update region filter
+                    currentFilters.region = value ? [value] : [];
+
+                    closeDropdown(regionBtn, regionDropdown);
+                    resetAndLoad();
+                });
+            });
+
+            // Popular Tags filter
+            const tagsBtn = document.getElementById('tags-filter-btn');
+            const tagsDropdown = document.getElementById('tags-dropdown');
+
+            tagsBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleDropdown(tagsBtn, tagsDropdown);
+            });
+
             // Age filter
             const ageBtn = document.getElementById('age-filter-btn');
             const ageDropdown = document.getElementById('age-dropdown');
@@ -1009,7 +1024,7 @@
                 item.addEventListener('click', function() {
                     const value = this.getAttribute('data-value');
                     selectDropdownItem(ageDropdown, this);
-                    ageBtn.querySelector('span').textContent = value ? this.textContent : 'Select Age';
+                    ageBtn.querySelector('span').textContent = value ? this.textContent : 'Age';
                     ageBtn.classList.toggle('active', !!value);
 
                     // Update filter - age is mapped to tags
@@ -1022,88 +1037,60 @@
                     resetAndLoad();
                 });
             });
+        }
 
-            // Sort filter
-            const sortBtn = document.getElementById('sort-filter-btn');
-            const sortDropdown = document.getElementById('sort-dropdown');
+        // Popular tags by gender
+        const popularTags = {
+            f: ['latina', 'asian', 'milf', 'teen', 'bigboobs', 'hairy', 'squirt', 'anal', 'ebony', 'mature'],
+            m: ['muscle', 'bigcock', 'bear', 'uncut', 'twink', 'daddy', 'latino', 'cum', 'bbc', 'fit'],
+            c: ['anal', 'threesome', 'young', 'bbw', 'interracial', 'latina', 'bisexual', 'feet', 'smoke', 'lesbian'],
+            t: ['bigcock', 'asian', 'latina', 'cum', 'anal', 'bigass', 'slim', 'ebony', 'mistress', 'new']
+        };
 
-            sortBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggleDropdown(sortBtn, sortDropdown);
+        function populateTagsDropdown(gender) {
+            const tagsDropdown = document.getElementById('tags-dropdown');
+            const tagsBtn = document.getElementById('tags-filter-btn');
+
+            // Get tags based on current gender or all tags
+            let tags = [];
+            if (gender && popularTags[gender]) {
+                tags = popularTags[gender];
+            } else {
+                // Combine all tags and remove duplicates
+                const allTags = [...popularTags.f, ...popularTags.m, ...popularTags.c, ...popularTags.t];
+                tags = [...new Set(allTags)].slice(0, 10);
+            }
+
+            // Clear and repopulate
+            tagsDropdown.innerHTML = '<div class="dropdown-item selected" data-value="">All Tags</div>';
+            tags.forEach(tag => {
+                const item = document.createElement('div');
+                item.className = 'dropdown-item';
+                item.setAttribute('data-value', tag);
+                item.textContent = tag;
+                tagsDropdown.appendChild(item);
             });
 
-            sortDropdown.querySelectorAll('.dropdown-item').forEach(item => {
+            // Reset button text
+            tagsBtn.querySelector('span').textContent = 'Popular Tags';
+            tagsBtn.classList.remove('active');
+
+            // Add click handlers for new items
+            tagsDropdown.querySelectorAll('.dropdown-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const value = this.getAttribute('data-value');
-                    selectDropdownItem(sortDropdown, this);
-                    sortBtn.querySelector('span').textContent = this.textContent;
-                    sortBtn.classList.toggle('active', !!value);
+                    selectDropdownItem(tagsDropdown, this);
+                    tagsBtn.querySelector('span').textContent = value ? this.textContent : 'Popular Tags';
+                    tagsBtn.classList.toggle('active', !!value);
 
-                    // Update filters
-                    currentFilters.hd = value === 'hd' ? true : null;
-                    currentFilters.new = value === 'new' ? true : null;
+                    // Update tag filter (excluding age tags)
+                    const ageTags = ['teen', 'young', 'milf', 'mature'];
+                    currentFilters.tag = currentFilters.tag.filter(t => ageTags.includes(t));
+                    if (value) {
+                        currentFilters.tag.push(value);
+                    }
 
-                    closeDropdown(sortBtn, sortDropdown);
-                    resetAndLoad();
-                });
-            });
-
-            // Gender filter
-            const genderBtn = document.getElementById('gender-filter-btn');
-            const genderDropdown = document.getElementById('gender-dropdown');
-
-            genderBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggleDropdown(genderBtn, genderDropdown);
-            });
-
-            genderDropdown.querySelectorAll('.dropdown-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    const value = this.getAttribute('data-value');
-                    selectDropdownItem(genderDropdown, this);
-                    genderBtn.querySelector('span').textContent = this.textContent;
-                    genderBtn.classList.toggle('active', !!value);
-
-                    // Update gender filter
-                    currentFilters.gender = value ? [value] : [];
-
-                    // Update URL and navigation
-                    let newPath = '/';
-                    if (value === 'f') newPath = '/girls';
-                    else if (value === 'm') newPath = '/men';
-                    else if (value === 'c') newPath = '/couples';
-                    else if (value === 't') newPath = '/trans';
-
-                    window.history.pushState({}, '', newPath);
-                    updateCanonicalUrl(newPath);
-                    updateActiveNavigation(newPath);
-                    updatePageTitle(value);
-
-                    closeDropdown(genderBtn, genderDropdown);
-                    resetAndLoad();
-                });
-            });
-
-            // Location filter
-            const locationBtn = document.getElementById('location-filter-btn');
-            const locationDropdown = document.getElementById('location-dropdown');
-
-            locationBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggleDropdown(locationBtn, locationDropdown);
-            });
-
-            locationDropdown.querySelectorAll('.dropdown-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    const value = this.getAttribute('data-value');
-                    selectDropdownItem(locationDropdown, this);
-                    locationBtn.querySelector('span').textContent = value ? this.textContent : 'Location';
-                    locationBtn.classList.toggle('active', !!value);
-
-                    // Update region filter
-                    currentFilters.region = value ? [value] : [];
-
-                    closeDropdown(locationBtn, locationDropdown);
+                    closeDropdown(tagsBtn, tagsDropdown);
                     resetAndLoad();
                 });
             });
@@ -1186,8 +1173,8 @@
                 updatePageTitle('all');
             }
 
-            // Update gender dropdown to match route
-            updateGenderDropdown(genderValue);
+            // Populate tags dropdown based on current gender
+            populateTagsDropdown(genderValue);
         }
 
         function updateCanonicalUrl(path) {
@@ -1199,21 +1186,6 @@
             const title = genderTitles[gender] || genderTitles.all;
             pageTitle.textContent = title;
             roomsTitle.textContent = gender === 'all' ? 'Featured Rooms' : title;
-        }
-
-        function updateGenderDropdown(genderValue) {
-            const genderBtn = document.getElementById('gender-filter-btn');
-            const genderDropdown = document.getElementById('gender-dropdown');
-
-            // Update button text
-            const genderTexts = { '': 'All Genders', 'f': 'Female', 'm': 'Male', 'c': 'Couples', 't': 'Trans' };
-            genderBtn.querySelector('span').textContent = genderTexts[genderValue] || 'All Genders';
-            genderBtn.classList.toggle('active', !!genderValue);
-
-            // Update selected item
-            genderDropdown.querySelectorAll('.dropdown-item').forEach(item => {
-                item.classList.toggle('selected', item.getAttribute('data-value') === genderValue);
-            });
         }
 
         function navigateTo(url) {
