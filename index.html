@@ -6,23 +6,23 @@
     <meta name="description" content="Explore live sex cams and watch real amateur webcam models. Filter by gender, region, and popular tags.">
     <meta name="keywords" content="live cams, sex cams, webcams, live video chat, adult webcams">
     <title>CamBadDies.net: Live Sex Cams | Watch Adult Webcams XXX</title>
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://cambaddies.net/">
-    
+
+    <!-- Canonical URL - Will be dynamically updated -->
+    <link rel="canonical" href="https://cambaddies.net/" id="canonical-url">
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Live Sex Cams - Watch Live Adult Webcams | HD Streaming">
     <meta property="og:description" content="Explore live sex cams and watch real amateur webcam models. Filter by gender, region, and popular tags.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cambaddies.net/">
     <meta property="og:image" content="/api/placeholder/1200/630">
-    
+
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Live Sex Cams - Watch Live Adult Webcams | HD Streaming">
     <meta name="twitter:description" content="Explore live sex cams and watch real amateur webcam models. Filter by gender, region, and popular tags.">
     <meta name="twitter:image" content="/api/placeholder/1200/630">
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -38,7 +38,7 @@
       "description": "Explore live sex cams and watch real amateur webcam models. Filter by gender, region, and popular tags."
     }
     </script>
-    
+
     <style>
         :root {
             --primary-color: #ff4757;
@@ -55,20 +55,20 @@
             --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: #f8f9fa;
         }
-        
+
         header {
             background-color: var(--primary-color);
             color: white;
@@ -78,7 +78,7 @@
             top: 0;
             z-index: 1000;
         }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
@@ -87,39 +87,39 @@
             margin: 0 auto;
             padding: 0 1rem;
         }
-        
+
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
             display: flex;
             align-items: center;
         }
-        
+
         .logo svg {
             margin-right: 0.5rem;
         }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
         }
-        
+
         .nav-links li {
             margin-left: 1.5rem;
         }
-        
+
         .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
         }
-        
+
         .nav-links a:hover, .nav-links a.active {
             color: var(--light-color);
             text-decoration: underline;
         }
-        
+
         .hamburger {
             display: none;
             cursor: pointer;
@@ -127,7 +127,7 @@
             border: none;
             color: white;
         }
-        
+
         /* Mobile Gender Buttons */
         .mobile-gender-buttons {
             display: none;
@@ -135,7 +135,7 @@
             padding: 0.5rem 1rem;
             background-color: var(--secondary-color);
         }
-        
+
         .mobile-gender-btn {
             flex: 1;
             text-align: center;
@@ -148,97 +148,116 @@
             font-weight: bold;
             font-size: 0.9rem;
         }
-        
+
         .mobile-gender-btn.active {
             background-color: var(--accent-color);
         }
-        
+
         main {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
-        
+
         .page-header {
             text-align: center;
             margin-bottom: 2rem;
         }
-        
+
         .page-header h1 {
             font-size: 2.5rem;
             color: var(--primary-color);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
-        .filters {
-            background-color: white;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            margin-bottom: 2rem;
-            box-shadow: var(--box-shadow);
-        }
-        
-        .filter-group {
+
+        /* Dropdown Filters */
+        .dropdown-filters {
             display: flex;
-            flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
-        
-        .filter-label {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            display: block;
+
+        .dropdown-filter {
+            position: relative;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .dropdown-filter-btn {
             width: 100%;
-        }
-        
-        .filter-option {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background-color: var(--light-color);
-            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            color: var(--text-light);
             cursor: pointer;
-            transition: var(--transition);
-            user-select: none;
-        }
-        
-        .filter-option:hover, .filter-option.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .filter-title {
-            margin-bottom: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: var(--transition);
         }
-        
-        .filter-title h2 {
-            font-size: 1.2rem;
+
+        .dropdown-filter-btn:hover {
+            border-color: var(--primary-color);
         }
-        
-        .filter-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
+
+        .dropdown-filter-btn.active {
+            border-color: var(--primary-color);
             color: var(--text-color);
         }
-        
-        #tag-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
+
+        .dropdown-filter-btn svg {
+            transition: transform 0.3s ease;
         }
-        
+
+        .dropdown-filter-btn.open svg {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            box-shadow: var(--box-shadow);
+            z-index: 100;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .dropdown-menu.open {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--light-color);
+        }
+
+        .dropdown-item.selected {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
         .rooms-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
         }
-        
+
         .room-card {
             background-color: white;
             border-radius: var(--border-radius);
@@ -248,19 +267,19 @@
             position: relative;
             cursor: pointer;
         }
-        
+
         .room-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .room-thumbnail {
             position: relative;
             padding-bottom: 75%; /* 4:3 aspect ratio */
             background-color: #eee;
             overflow: hidden;
         }
-        
+
         .room-thumbnail img {
             position: absolute;
             width: 100%;
@@ -268,11 +287,11 @@
             object-fit: cover;
             transition: var(--transition);
         }
-        
+
         .room-card:hover .room-thumbnail img {
             transform: scale(1.05);
         }
-        
+
         .room-badges {
             position: absolute;
             top: 10px;
@@ -280,7 +299,7 @@
             display: flex;
             gap: 5px;
         }
-        
+
         .badge {
             padding: 0.2rem 0.5rem;
             border-radius: 4px;
@@ -288,15 +307,15 @@
             font-weight: bold;
             color: white;
         }
-        
+
         .badge-hd {
             background-color: var(--success-color);
         }
-        
+
         .badge-new {
             background-color: var(--primary-color);
         }
-        
+
         .room-viewers {
             position: absolute;
             bottom: 10px;
@@ -309,15 +328,15 @@
             display: flex;
             align-items: center;
         }
-        
+
         .room-viewers svg {
             margin-right: 5px;
         }
-        
+
         .room-details {
             padding: 1rem;
         }
-        
+
         .room-title {
             font-weight: bold;
             margin-bottom: 0.5rem;
@@ -326,7 +345,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        
+
         .room-meta {
             display: flex;
             justify-content: space-between;
@@ -334,32 +353,32 @@
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
-        
+
         .room-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-top: 0.5rem;
         }
-        
+
         .room-tag {
             background-color: var(--light-color);
             padding: 0.2rem 0.5rem;
             border-radius: 4px;
             font-size: 0.8rem;
         }
-        
+
         .room-language {
             display: flex;
             align-items: center;
             margin-top: 0.5rem;
             font-size: 0.9rem;
         }
-        
+
         .room-language svg {
             margin-right: 0.3rem;
         }
-        
+
         .load-more {
             display: block;
             margin: 2rem auto;
@@ -372,18 +391,18 @@
             cursor: pointer;
             transition: var(--transition);
         }
-        
+
         .load-more:hover {
             background-color: #4240db;
         }
-        
+
         footer {
             background-color: var(--secondary-color);
             color: white;
             padding: 3rem 1rem;
             margin-top: 4rem;
         }
-        
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -391,53 +410,31 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-        
+
         .footer-section h3 {
             margin-bottom: 1rem;
             font-size: 1.2rem;
         }
-        
+
         .footer-links {
             list-style: none;
         }
-        
+
         .footer-links li {
             margin-bottom: 0.5rem;
         }
-        
+
         .footer-links a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
         }
-        
+
         .footer-links a:hover {
             color: white;
             padding-left: 5px;
         }
-        
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-        
-        .social-icon:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-        
+
         .copyright {
             max-width: 1200px;
             margin: 2rem auto 0;
@@ -447,7 +444,7 @@
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
         }
-        
+
         /* Modal */
         .modal {
             display: none;
@@ -460,18 +457,18 @@
             z-index: 2000;
             overflow-y: auto;
         }
-        
+
         .modal-content {
             position: relative;
             background-color: white;
-            margin: 5% auto;
+            margin: 2% auto;
             padding: 20px;
-            width: 90%;
-            max-width: 1000px;
+            width: 95%;
+            max-width: 1100px;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
         }
-        
+
         .close-modal {
             position: absolute;
             top: 10px;
@@ -490,53 +487,63 @@
             border-radius: 50%;
             background-color: white;
         }
-        
+
         .close-modal:hover {
             background-color: #f1f1f1;
         }
-        
+
         .modal-header {
             margin-bottom: 1rem;
         }
-        
+
+        .modal-title {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
         .modal-body {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
-        
-        @media (min-width: 768px) {
-            .modal-body {
-                flex-direction: row;
-            }
-        }
-        
+
         .embed-container {
-    position: relative;
-    height: 480px; /* Altura fija en escritorio */
-    width: 100%;
-    background-color: #000;
-    overflow: hidden;
-}
-        
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background-color: #000;
+            overflow: hidden;
+        }
+
         .embed-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-        
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         .room-info {
-            flex: 1;
             padding: 1rem;
             background-color: var(--light-color);
             border-radius: var(--border-radius);
-            overflow-y: auto;
-            max-height: 480px;
         }
-        
+
+        .room-info-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .room-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .room-info .room-tags {
+            margin-top: 1rem;
+        }
+
         /* Loader */
         .loader-container {
             display: flex;
@@ -545,7 +552,7 @@
             height: 100px;
             width: 100%;
         }
-        
+
         .loader {
             border: 5px solid #f3f3f3;
             border-top: 5px solid var(--primary-color);
@@ -554,26 +561,26 @@
             height: 50px;
             animation: spin 2s linear infinite;
         }
-        
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             .hamburger {
                 display: block;
             }
-            
+
             .desktop-menu {
                 display: none;
             }
-            
+
             .mobile-gender-buttons {
                 display: flex;
             }
-            
+
             .nav-links {
                 position: fixed;
                 top: 60px;
@@ -587,64 +594,84 @@
                 transition: var(--transition);
                 z-index: 999;
             }
-            
+
             .nav-links.active {
                 left: 0;
             }
-            
+
             .nav-links li {
                 margin: 1rem 0;
             }
-            
+
             .page-header h1 {
                 font-size: 1.8rem;
             }
-            
+
+            .dropdown-filters {
+                flex-direction: column;
+            }
+
+            .dropdown-filter {
+                min-width: 100%;
+            }
+
             .rooms-container {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
-            
+
             .modal-content {
-                width: 95%;
-                margin: 10% auto;
-                padding: 15px;
+                width: 98%;
+                margin: 2% auto;
+                padding: 10px;
             }
-            
+
             .modal-body {
                 flex-direction: column;
             }
-            
+
             .embed-container {
-        height: 0;
-        padding-bottom: 75%; /* Usar ratio para m贸viles */
-    }
-            
+                padding-bottom: 75%; /* 4:3 for mobile */
+            }
+
             .room-info {
-                max-height: 300px;
+                max-height: none;
             }
         }
-        
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+
         .fade-in {
             animation: fadeIn 0.5s ease-in;
         }
-        
+
         /* Utility Classes */
         .hidden {
             display: none !important;
         }
-        
+
         .no-rooms-message {
             text-align: center;
             padding: 2rem;
             background-color: var(--light-color);
             border-radius: var(--border-radius);
             margin: 2rem 0;
+        }
+
+        /* Infinite scroll loader */
+        .scroll-loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .scroll-loader .loader {
+            width: 30px;
+            height: 30px;
         }
     </style>
 </head>
@@ -661,7 +688,7 @@
                 </svg>
                 <span>Live Cams</span>
             </div>
-            
+
             <!-- Desktop Menu -->
             <ul class="nav-links desktop-menu">
                 <li><a href="/girls" class="nav-link" data-gender="f">Girls</a></li>
@@ -669,7 +696,7 @@
                 <li><a href="/men" class="nav-link" data-gender="m">Men</a></li>
                 <li><a href="/trans" class="nav-link" data-gender="t">Trans</a></li>
             </ul>
-            
+
             <button class="hamburger">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -678,7 +705,7 @@
                 </svg>
             </button>
         </nav>
-        
+
         <!-- Mobile Gender Buttons -->
         <div class="mobile-gender-buttons">
             <a href="/girls" class="mobile-gender-btn" data-gender="f">Girls</a>
@@ -687,49 +714,80 @@
             <a href="/trans" class="mobile-gender-btn" data-gender="t">Trans</a>
         </div>
     </header>
-    
+
     <main>
         <section class="page-header">
             <h1 id="page-title">Live Sex Cams</h1>
         </section>
-        
-        <section class="filters">
-            <div class="filter-title">
-                <h2>Filters</h2>
-                <button class="filter-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="18 15 12 9 6 15"></polyline>
+
+        <!-- Dropdown Filters -->
+        <section class="dropdown-filters">
+            <div class="dropdown-filter">
+                <button class="dropdown-filter-btn" id="age-filter-btn">
+                    <span>Select Age</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </button>
+                <div class="dropdown-menu" id="age-dropdown">
+                    <div class="dropdown-item" data-value="">All Ages</div>
+                    <div class="dropdown-item" data-value="teen">18-22</div>
+                    <div class="dropdown-item" data-value="young">23-30</div>
+                    <div class="dropdown-item" data-value="milf">31-45</div>
+                    <div class="dropdown-item" data-value="mature">46+</div>
+                </div>
             </div>
-            
-            <div class="filter-content">
-                <div class="filter-group region-filters">
-                    <span class="filter-label">Region</span>
-                    <div class="filter-option" data-filter="region" data-value="northamerica">North America</div>
-                    <div class="filter-option" data-filter="region" data-value="southamerica">South America</div>
-                    <div class="filter-option" data-filter="region" data-value="europe_russia">Europe/Russia</div>
-                    <div class="filter-option" data-filter="region" data-value="asia">Asia</div>
-                    <div class="filter-option" data-filter="region" data-value="other">Other</div>
+
+            <div class="dropdown-filter">
+                <button class="dropdown-filter-btn" id="sort-filter-btn">
+                    <span>Sort By</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="dropdown-menu" id="sort-dropdown">
+                    <div class="dropdown-item selected" data-value="">Most Popular</div>
+                    <div class="dropdown-item" data-value="new">Newest</div>
+                    <div class="dropdown-item" data-value="hd">HD Only</div>
                 </div>
-                
-                <div class="filter-group">
-                    <span class="filter-label">Popular Tags</span>
-                    <div id="tag-filters">
-                        <!-- Tags will be dynamically loaded based on gender -->
-                    </div>
+            </div>
+
+            <div class="dropdown-filter">
+                <button class="dropdown-filter-btn" id="gender-filter-btn">
+                    <span>Female</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="dropdown-menu" id="gender-dropdown">
+                    <div class="dropdown-item" data-value="">All Genders</div>
+                    <div class="dropdown-item selected" data-value="f">Female</div>
+                    <div class="dropdown-item" data-value="m">Male</div>
+                    <div class="dropdown-item" data-value="c">Couples</div>
+                    <div class="dropdown-item" data-value="t">Trans</div>
                 </div>
-                
-                <div class="filter-group">
-                    <span class="filter-label">Quality</span>
-                    <div class="filter-option" data-filter="hd" data-value="true">HD Only</div>
-                    <div class="filter-option" data-filter="new" data-value="true">New Only</div>
+            </div>
+
+            <div class="dropdown-filter">
+                <button class="dropdown-filter-btn" id="location-filter-btn">
+                    <span>Location</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="dropdown-menu" id="location-dropdown">
+                    <div class="dropdown-item selected" data-value="">All Locations</div>
+                    <div class="dropdown-item" data-value="northamerica">North America</div>
+                    <div class="dropdown-item" data-value="southamerica">South America</div>
+                    <div class="dropdown-item" data-value="europe_russia">Europe/Russia</div>
+                    <div class="dropdown-item" data-value="asia">Asia</div>
+                    <div class="dropdown-item" data-value="other">Other</div>
                 </div>
             </div>
         </section>
-        
+
         <section class="featured">
-            <h2 id="rooms-title">Featured Rooms</h2>
+            <div class="section-title" id="rooms-title">Featured Rooms</div>
             <div class="loader-container" id="rooms-loader">
                 <div class="loader"></div>
             </div>
@@ -737,19 +795,23 @@
                 <!-- Rooms will be dynamically loaded here by JavaScript -->
             </div>
             <div class="no-rooms-message hidden" id="no-rooms-message">
-                <h3>No rooms found</h3>
+                <div class="no-rooms-title">No rooms found</div>
                 <p>Try different filters or check back later.</p>
             </div>
         </section>
-        
+
         <button class="load-more" id="load-more-btn">Load More</button>
+
+        <div class="scroll-loader hidden" id="scroll-loader">
+            <div class="loader"></div>
+        </div>
     </main>
-    
+
     <div class="modal" id="room-modal">
         <div class="modal-content">
-            <button class="close-modal" id="close-modal">脳</button>
+            <button class="close-modal" id="close-modal">&times;</button>
             <div class="modal-header">
-                <h2 id="modal-title">Room Name</h2>
+                <div class="modal-title" id="modal-title">Room Name</div>
             </div>
             <div class="modal-body">
                 <div class="embed-container" id="modal-embed">
@@ -761,31 +823,12 @@
             </div>
         </div>
     </div>
-    
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Live Cams</h3>
                 <p>The best platform to discover and enjoy live cams from around the world. Explore thousands of real-time broadcasts.</p>
-                <div class="social-icons">
-                    <a href="#" class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                        </svg>
-                    </a>
-                </div>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
@@ -798,13 +841,12 @@
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Help & Support</h3>
+                <h3>Legal</h3>
                 <ul class="footer-links">
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Legal Notice</a></li>
+                    <li><a href="https://www.cambaddies.net/terms/" rel="nofollow noopener noreferrer" target="_blank">Terms</a></li>
+                    <li><a href="https://www.cambaddies.net/2257/" rel="nofollow noopener noreferrer" target="_blank">2257</a></li>
+                    <li><a href="https://www.cambaddies.net/law_enforcement/" rel="nofollow noopener noreferrer" target="_blank">Law Enforcement</a></li>
+                    <li><a href="https://www.cambaddies.net/privacy/" rel="nofollow noopener noreferrer" target="_blank">Privacy Policy</a></li>
                 </ul>
             </div>
         </div>
@@ -812,7 +854,7 @@
             <p>&copy; 2025 Live Cams. All rights reserved.</p>
         </div>
     </footer>
-    
+
     <script>
     // Global variables
     const API_URL = 'https://chaturbate.com/api/public/affiliates/onlinerooms/';
@@ -828,16 +870,10 @@
     };
     let isLoading = false;
     let allRooms = [];
+    let loadedUsernames = new Set(); // Track loaded usernames to prevent duplicates
     let totalRooms = 0;
     let currentPath = '';
-
-    // Popular tags by gender
-    const popularTags = {
-        f: ['latina', 'asian', 'milf', 'teen', 'bigboobs', 'hairy', 'squirt', 'anal', 'ebony', 'mature'],
-        m: ['muscle', 'bigcock', 'bear', 'uncut', 'twink', 'daddy', 'latino', 'cum', 'bbc', 'fit'],
-        c: ['anal', 'threesome', 'young', 'bbw', 'interracial', 'latina', 'bisexual', 'feet', 'smoke', 'lesbian'],
-        t: ['bigcock', 'asian', 'latina', 'cum', 'anal', 'bigass', 'slim', 'ebony', 'mistress', 'new']
-    };
+    let infiniteScrollEnabled = false;
 
     // Title mapping for different genders
     const genderTitles = {
@@ -856,27 +892,25 @@
         const roomsTitle = document.getElementById('rooms-title');
         const pageTitle = document.getElementById('page-title');
         const loadMoreBtn = document.getElementById('load-more-btn');
+        const scrollLoader = document.getElementById('scroll-loader');
         const noRoomsMessage = document.getElementById('no-rooms-message');
-        const filterOptions = document.querySelectorAll('.filter-option');
         const navLinks = document.querySelectorAll('.nav-link');
         const mobileGenderButtons = document.querySelectorAll('.mobile-gender-btn');
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-links');
-        const filterToggle = document.querySelector('.filter-toggle');
-        const filterContent = document.querySelector('.filter-content');
         const modal = document.getElementById('room-modal');
         const closeModal = document.getElementById('close-modal');
-        const tagFiltersContainer = document.getElementById('tag-filters');
+        const canonicalUrl = document.getElementById('canonical-url');
 
         // First, handle the route
         handleRoute();
-        
+
         // Set up event listeners
         setupEventListeners();
-        
+
         // Initial load
         loadRooms(true);
-        
+
         // Handle URL changes (browser back/forward buttons)
         window.addEventListener('popstate', function() {
             handleRoute();
@@ -884,48 +918,35 @@
         });
 
         function setupEventListeners() {
-            // Load more button
+            // Load more button - enables infinite scroll after first click
             loadMoreBtn.addEventListener('click', function() {
                 currentFilters.offset += currentFilters.limit;
                 loadRooms(false);
+
+                // Enable infinite scroll and hide button
+                infiniteScrollEnabled = true;
+                loadMoreBtn.classList.add('hidden');
             });
-            
-            // Filter option clicks for region filters
-            document.querySelectorAll('.filter-option[data-filter="region"]').forEach(option => {
-                option.addEventListener('click', function() {
-                    const value = this.getAttribute('data-value');
-                    this.classList.toggle('active');
-                    
-                    if (this.classList.contains('active')) {
-                        if (!currentFilters.region.includes(value)) {
-                            currentFilters.region.push(value);
-                        }
-                    } else {
-                        currentFilters.region = currentFilters.region.filter(r => r !== value);
+
+            // Infinite scroll listener
+            window.addEventListener('scroll', function() {
+                if (!infiniteScrollEnabled || isLoading) return;
+
+                const scrollPosition = window.innerHeight + window.scrollY;
+                const documentHeight = document.documentElement.scrollHeight;
+
+                // Load more when user is 200px from bottom
+                if (scrollPosition >= documentHeight - 200) {
+                    if (allRooms.length < totalRooms) {
+                        currentFilters.offset += currentFilters.limit;
+                        loadRooms(false);
                     }
-                    
-                    loadRooms(true);
-                });
+                }
             });
-            
-            // Filter option clicks for HD and New filters
-            document.querySelectorAll('.filter-option[data-filter="hd"], .filter-option[data-filter="new"]').forEach(option => {
-                option.addEventListener('click', function() {
-                    const filter = this.getAttribute('data-filter');
-                    const value = this.getAttribute('data-value') === 'true';
-                    
-                    this.classList.toggle('active');
-                    
-                    if (this.classList.contains('active')) {
-                        currentFilters[filter] = value;
-                    } else {
-                        currentFilters[filter] = null;
-                    }
-                    
-                    loadRooms(true);
-                });
-            });
-            
+
+            // Dropdown filter setup
+            setupDropdownFilters();
+
             // Desktop nav links
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -934,7 +955,7 @@
                     navigateTo(href);
                 });
             });
-            
+
             // Mobile gender buttons
             mobileGenderButtons.forEach(btn => {
                 btn.addEventListener('click', function(e) {
@@ -943,104 +964,273 @@
                     navigateTo(href);
                 });
             });
-            
+
             // Modal close button
             closeModal.addEventListener('click', function() {
-                modal.style.display = 'none';
+                closeRoomModal();
             });
-            
+
             // Click outside the modal to close
             window.addEventListener('click', function(e) {
                 if (e.target === modal) {
-                    modal.style.display = 'none';
+                    closeRoomModal();
                 }
             });
-            
+
             // Mobile menu toggle (hamburger menu)
             hamburger.addEventListener('click', function() {
                 navMenu.classList.toggle('active');
             });
-            
-            // Filter toggle button
-            filterToggle.addEventListener('click', function() {
-                filterContent.classList.toggle('hidden');
-                
-                // Change the icon
-                const icon = this.querySelector('svg polyline');
-                if (filterContent.classList.contains('hidden')) {
-                    icon.setAttribute('points', '6 9 12 15 18 9');
-                } else {
-                    icon.setAttribute('points', '18 15 12 9 6 15');
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown-filter')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('open');
+                    });
+                    document.querySelectorAll('.dropdown-filter-btn').forEach(btn => {
+                        btn.classList.remove('open');
+                    });
                 }
             });
+        }
+
+        function setupDropdownFilters() {
+            // Age filter
+            const ageBtn = document.getElementById('age-filter-btn');
+            const ageDropdown = document.getElementById('age-dropdown');
+
+            ageBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleDropdown(ageBtn, ageDropdown);
+            });
+
+            ageDropdown.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    selectDropdownItem(ageDropdown, this);
+                    ageBtn.querySelector('span').textContent = value ? this.textContent : 'Select Age';
+                    ageBtn.classList.toggle('active', !!value);
+
+                    // Update filter - age is mapped to tags
+                    currentFilters.tag = currentFilters.tag.filter(t => !['teen', 'young', 'milf', 'mature'].includes(t));
+                    if (value) {
+                        currentFilters.tag.push(value);
+                    }
+
+                    closeDropdown(ageBtn, ageDropdown);
+                    resetAndLoad();
+                });
+            });
+
+            // Sort filter
+            const sortBtn = document.getElementById('sort-filter-btn');
+            const sortDropdown = document.getElementById('sort-dropdown');
+
+            sortBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleDropdown(sortBtn, sortDropdown);
+            });
+
+            sortDropdown.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    selectDropdownItem(sortDropdown, this);
+                    sortBtn.querySelector('span').textContent = this.textContent;
+                    sortBtn.classList.toggle('active', !!value);
+
+                    // Update filters
+                    currentFilters.hd = value === 'hd' ? true : null;
+                    currentFilters.new = value === 'new' ? true : null;
+
+                    closeDropdown(sortBtn, sortDropdown);
+                    resetAndLoad();
+                });
+            });
+
+            // Gender filter
+            const genderBtn = document.getElementById('gender-filter-btn');
+            const genderDropdown = document.getElementById('gender-dropdown');
+
+            genderBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleDropdown(genderBtn, genderDropdown);
+            });
+
+            genderDropdown.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    selectDropdownItem(genderDropdown, this);
+                    genderBtn.querySelector('span').textContent = this.textContent;
+                    genderBtn.classList.toggle('active', !!value);
+
+                    // Update gender filter
+                    currentFilters.gender = value ? [value] : [];
+
+                    // Update URL and navigation
+                    let newPath = '/';
+                    if (value === 'f') newPath = '/girls';
+                    else if (value === 'm') newPath = '/men';
+                    else if (value === 'c') newPath = '/couples';
+                    else if (value === 't') newPath = '/trans';
+
+                    window.history.pushState({}, '', newPath);
+                    updateCanonicalUrl(newPath);
+                    updateActiveNavigation(newPath);
+                    updatePageTitle(value);
+
+                    closeDropdown(genderBtn, genderDropdown);
+                    resetAndLoad();
+                });
+            });
+
+            // Location filter
+            const locationBtn = document.getElementById('location-filter-btn');
+            const locationDropdown = document.getElementById('location-dropdown');
+
+            locationBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleDropdown(locationBtn, locationDropdown);
+            });
+
+            locationDropdown.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    selectDropdownItem(locationDropdown, this);
+                    locationBtn.querySelector('span').textContent = value ? this.textContent : 'Location';
+                    locationBtn.classList.toggle('active', !!value);
+
+                    // Update region filter
+                    currentFilters.region = value ? [value] : [];
+
+                    closeDropdown(locationBtn, locationDropdown);
+                    resetAndLoad();
+                });
+            });
+        }
+
+        function toggleDropdown(btn, dropdown) {
+            // Close other dropdowns
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                if (menu !== dropdown) menu.classList.remove('open');
+            });
+            document.querySelectorAll('.dropdown-filter-btn').forEach(b => {
+                if (b !== btn) b.classList.remove('open');
+            });
+
+            btn.classList.toggle('open');
+            dropdown.classList.toggle('open');
+        }
+
+        function closeDropdown(btn, dropdown) {
+            btn.classList.remove('open');
+            dropdown.classList.remove('open');
+        }
+
+        function selectDropdownItem(dropdown, selectedItem) {
+            dropdown.querySelectorAll('.dropdown-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            selectedItem.classList.add('selected');
+        }
+
+        function resetAndLoad() {
+            infiniteScrollEnabled = false;
+            loadMoreBtn.classList.remove('hidden');
+            loadRooms(true);
         }
 
         function handleRoute() {
             const path = window.location.pathname;
             currentPath = path;
-            
-            // Reset all filters first
-            resetAllFilters();
-            
+
+            // Reset filters (keep existing non-route filters)
+            currentFilters.gender = [];
+            currentFilters.offset = 0;
+
+            // Reset infinite scroll
+            infiniteScrollEnabled = false;
+            loadMoreBtn.classList.remove('hidden');
+
+            // Update canonical URL
+            updateCanonicalUrl(path);
+
             // Update active class for navigation
             updateActiveNavigation(path);
-            
+
             // Handle different routes
+            let genderValue = '';
             if (path === '/' || path === '') {
-                // Home page - show all cams
-                pageTitle.textContent = genderTitles.all;
-                roomsTitle.textContent = 'Featured Rooms';
-                loadTagFilters('all');
+                genderValue = '';
+                updatePageTitle('all');
             } else if (path === '/girls') {
-                // Girls page - set gender filter to female
                 currentFilters.gender = ['f'];
-                pageTitle.textContent = genderTitles.f;
-                roomsTitle.textContent = 'Female Cams';
-                loadTagFilters('f');
+                genderValue = 'f';
+                updatePageTitle('f');
             } else if (path === '/men') {
-                // Men page - set gender filter to male
                 currentFilters.gender = ['m'];
-                pageTitle.textContent = genderTitles.m;
-                roomsTitle.textContent = 'Male Cams';
-                loadTagFilters('m');
+                genderValue = 'm';
+                updatePageTitle('m');
             } else if (path === '/couples') {
-                // Couples page - set gender filter to couple
                 currentFilters.gender = ['c'];
-                pageTitle.textContent = genderTitles.c;
-                roomsTitle.textContent = 'Couples Cams';
-                loadTagFilters('c');
+                genderValue = 'c';
+                updatePageTitle('c');
             } else if (path === '/trans') {
-                // Trans page - set gender filter to trans
                 currentFilters.gender = ['t'];
-                pageTitle.textContent = genderTitles.t;
-                roomsTitle.textContent = 'Trans Cams';
-                loadTagFilters('t');
+                genderValue = 't';
+                updatePageTitle('t');
             } else {
                 // 404 or unknown - redirect to home
                 window.history.replaceState({}, '', '/');
-                pageTitle.textContent = genderTitles.all;
-                roomsTitle.textContent = 'Featured Rooms';
-                loadTagFilters('all');
+                updateCanonicalUrl('/');
+                updatePageTitle('all');
             }
-            
-            console.log('Current filters after route change:', currentFilters);
+
+            // Update gender dropdown to match route
+            updateGenderDropdown(genderValue);
+        }
+
+        function updateCanonicalUrl(path) {
+            const baseUrl = 'https://cambaddies.net';
+            canonicalUrl.href = baseUrl + (path === '/' ? '/' : path);
+        }
+
+        function updatePageTitle(gender) {
+            const title = genderTitles[gender] || genderTitles.all;
+            pageTitle.textContent = title;
+            roomsTitle.textContent = gender === 'all' ? 'Featured Rooms' : title;
+        }
+
+        function updateGenderDropdown(genderValue) {
+            const genderBtn = document.getElementById('gender-filter-btn');
+            const genderDropdown = document.getElementById('gender-dropdown');
+
+            // Update button text
+            const genderTexts = { '': 'All Genders', 'f': 'Female', 'm': 'Male', 'c': 'Couples', 't': 'Trans' };
+            genderBtn.querySelector('span').textContent = genderTexts[genderValue] || 'All Genders';
+            genderBtn.classList.toggle('active', !!genderValue);
+
+            // Update selected item
+            genderDropdown.querySelectorAll('.dropdown-item').forEach(item => {
+                item.classList.toggle('selected', item.getAttribute('data-value') === genderValue);
+            });
         }
 
         function navigateTo(url) {
             // Update URL without page reload
             window.history.pushState({}, '', url);
-            
+
             // Handle the new route
             handleRoute();
-            
+
             // Load rooms with new filters
             loadRooms(true);
-            
+
             // Close mobile menu if open
             if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
             }
-            
+
             // Scroll to top
             window.scrollTo(0, 0);
         }
@@ -1054,7 +1244,7 @@
                     link.classList.remove('active');
                 }
             });
-            
+
             // Mobile buttons
             mobileGenderButtons.forEach(btn => {
                 if (btn.getAttribute('href') === path) {
@@ -1065,121 +1255,57 @@
             });
         }
 
-        function loadTagFilters(gender) {
-            // Clear existing tag filters
-            tagFiltersContainer.innerHTML = '';
-            
-            let tags = [];
-            
-            if (gender === 'all') {
-                // Combine all tags and remove duplicates
-                const allTags = [...popularTags.f, ...popularTags.m, ...popularTags.c, ...popularTags.t];
-                tags = [...new Set(allTags)].slice(0, 10);
-            } else {
-                tags = popularTags[gender] || [];
-            }
-            
-            // Generate tag filter HTML
-            tags.forEach(tag => {
-                const tagElement = document.createElement('div');
-                tagElement.className = 'filter-option';
-                tagElement.setAttribute('data-filter', 'tag');
-                tagElement.setAttribute('data-value', tag);
-                tagElement.textContent = tag;
-                
-                // Add click event
-                tagElement.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    
-                    // Update filter state based on active class
-                    if (this.classList.contains('active')) {
-                        if (!currentFilters.tag.includes(tag)) {
-                            currentFilters.tag.push(tag);
-                        }
-                    } else {
-                        currentFilters.tag = currentFilters.tag.filter(t => t !== tag);
-                    }
-                    
-                    loadRooms(true);
-                });
-                
-                tagFiltersContainer.appendChild(tagElement);
-            });
-        }
-
-        function resetAllFilters() {
-            // Reset filter state completely
-            currentFilters = {
-                gender: [],
-                region: [],
-                tag: [],
-                hd: null,
-                new: null,
-                offset: 0,
-                limit: 20
-            };
-            
-            // Reset UI for all filters
-            document.querySelectorAll('.filter-option').forEach(option => {
-                option.classList.remove('active');
-            });
-        }
-
         function buildApiUrl() {
             const params = new URLSearchParams();
-            
+
             // Required parameters
             params.append('wm', WM);
             params.append('client_ip', 'request_ip');
             params.append('format', 'json');
             params.append('limit', currentFilters.limit);
             params.append('offset', currentFilters.offset);
-            
+
             // Optional filters
             if (currentFilters.gender.length > 0) {
                 currentFilters.gender.forEach(g => params.append('gender', g));
             }
-            
+
             if (currentFilters.region.length > 0) {
                 currentFilters.region.forEach(r => params.append('region', r));
             }
-            
+
             if (currentFilters.tag.length > 0) {
                 // API supports max 5 tags
                 currentFilters.tag.slice(0, 5).forEach(t => params.append('tag', t));
             }
-            
+
             if (currentFilters.hd !== null) {
                 params.append('hd', currentFilters.hd);
             }
-            
+
             if (currentFilters.new !== null) {
                 params.append('exhibitionist', currentFilters.new);
             }
-            
+
             return `${API_URL}?${params.toString()}`;
         }
 
         function loadRooms(reset = false) {
             if (isLoading) return;
-            
+
             isLoading = true;
-            
+
             if (reset) {
                 currentFilters.offset = 0;
                 roomsContainer.innerHTML = '';
                 allRooms = [];
+                loadedUsernames.clear();
             }
-            
-            showLoader();
-            
+
+            showLoader(reset);
+
             const apiUrl = buildApiUrl();
-            console.log('Loading rooms with URL:', apiUrl);
-            console.log('Current filters:', JSON.stringify(currentFilters));
-            
-            // Update title based on filters
-            updateTitle();
-            
+
             // Fetch data from API
             fetch(apiUrl)
                 .then(response => {
@@ -1190,97 +1316,71 @@
                 })
                 .then(data => {
                     hideLoader();
-                    console.log('API response:', data);
-                    
+
                     // Update total rooms count
                     totalRooms = data.count;
-                    
-                    // Add new rooms to the array
-                    if (data.results && data.results.length > 0) {
-                        allRooms = [...allRooms, ...data.results];
-                        
-                        // Display the rooms
-                        displayRooms(data.results, reset);
-                        
-                        // Show/hide load more button
-                        if (allRooms.length < totalRooms) {
-                            loadMoreBtn.classList.remove('hidden');
-                        } else {
-                            loadMoreBtn.classList.add('hidden');
+
+                    // Filter out duplicates
+                    const newRooms = (data.results || []).filter(room => {
+                        if (loadedUsernames.has(room.username)) {
+                            return false;
                         }
-                        
+                        loadedUsernames.add(room.username);
+                        return true;
+                    });
+
+                    // Add new rooms to the array
+                    if (newRooms.length > 0) {
+                        allRooms = [...allRooms, ...newRooms];
+
+                        // Display the rooms
+                        displayRooms(newRooms, reset);
+
+                        // Show/hide load more button (only if infinite scroll not enabled)
+                        if (!infiniteScrollEnabled) {
+                            if (allRooms.length < totalRooms) {
+                                loadMoreBtn.classList.remove('hidden');
+                            } else {
+                                loadMoreBtn.classList.add('hidden');
+                            }
+                        }
+
                         noRoomsMessage.classList.add('hidden');
                     } else {
                         if (reset) {
                             noRoomsMessage.classList.remove('hidden');
                             loadMoreBtn.classList.add('hidden');
-                        } else {
-                            loadMoreBtn.classList.add('hidden');
                         }
                     }
-                    
+
                     isLoading = false;
                 })
                 .catch(error => {
                     console.error('Error fetching rooms:', error);
                     hideLoader();
                     isLoading = false;
-                    
+
                     // Show error message to user
                     noRoomsMessage.innerHTML = `
-                        <h3>Error loading rooms</h3>
+                        <div class="no-rooms-title">Error loading rooms</div>
                         <p>There was a problem connecting to the server. Please try again later.</p>
                     `;
                     noRoomsMessage.classList.remove('hidden');
                 });
         }
 
-        function updateTitle() {
-            let title = roomsTitle.textContent.split(' - ')[0]; // Get base title without additions
-            
-            let additionalInfo = [];
-            
-            // Add region info if any
-            if (currentFilters.region.length > 0) {
-                const regionMap = {
-                    'northamerica': 'North America',
-                    'southamerica': 'South America',
-                    'europe_russia': 'Europe/Russia',
-                    'asia': 'Asia',
-                    'other': 'Other Regions'
-                };
-                additionalInfo.push('from ' + currentFilters.region.map(r => regionMap[r] || r).join(', '));
-            }
-            
-            // Add tags info if any
-            if (currentFilters.tag.length > 0) {
-                additionalInfo.push('Tags: ' + currentFilters.tag.join(', '));
-            }
-            
-            // Add quality info if any
-            let qualityInfo = [];
-            if (currentFilters.hd) qualityInfo.push('HD');
-            if (currentFilters.new) qualityInfo.push('New');
-            
-            if (qualityInfo.length > 0) {
-                additionalInfo.push('(' + qualityInfo.join(', ') + ')');
-            }
-            
-            // Update the title
-            if (additionalInfo.length > 0) {
-                roomsTitle.textContent = title + ' - ' + additionalInfo.join(' ');
+        function showLoader(isReset) {
+            if (isReset) {
+                roomsLoader.classList.remove('hidden');
             } else {
-                roomsTitle.textContent = title;
+                scrollLoader.classList.remove('hidden');
             }
-        }
-
-        function showLoader() {
-            roomsLoader.classList.remove('hidden');
             loadMoreBtn.disabled = true;
         }
 
         function hideLoader() {
             roomsLoader.classList.add('hidden');
+            scrollLoader.classList.add('hidden');
             loadMoreBtn.disabled = false;
         }
 
@@ -1288,7 +1388,7 @@
             if (reset) {
                 roomsContainer.innerHTML = '';
             }
-            
+
             rooms.forEach(room => {
                 const roomCard = createRoomCard(room);
                 roomsContainer.appendChild(roomCard);
@@ -1299,17 +1399,17 @@
             const card = document.createElement('div');
             card.className = 'room-card fade-in';
             card.setAttribute('data-username', room.username);
-            
+
             // Format online time
             const hours = Math.floor(room.seconds_online / 3600);
             const minutes = Math.floor((room.seconds_online % 3600) / 60);
-            const onlineTime = hours > 0 ? 
-                `${hours}h ${minutes}m` : 
+            const onlineTime = hours > 0 ?
+                `${hours}h ${minutes}m` :
                 `${minutes}m`;
-            
+
             // Limit tags to 3 for display
             const displayTags = room.tags.slice(0, 3);
-            
+
             card.innerHTML = `
                 <div class="room-thumbnail">
                     <img src="${room.image_url_360x270}" alt="${room.username} preview" loading="lazy">
@@ -1326,7 +1426,7 @@
                     </div>
                 </div>
                 <div class="room-details">
-                    <h3 class="room-title">${room.username}</h3>
+                    <div class="room-title">${room.username}</div>
                     <div class="room-meta">
                         <span>${room.age ? `${room.age} years` : ''}</span>
                         <span>${onlineTime} online</span>
@@ -1343,12 +1443,12 @@
                     </div>
                 </div>
             `;
-            
+
             // Add click event to open modal
             card.addEventListener('click', function() {
                 openRoomModal(room);
             });
-            
+
             return card;
         }
 
@@ -1356,16 +1456,16 @@
             const modalTitle = document.getElementById('modal-title');
             const modalEmbed = document.getElementById('modal-embed');
             const modalInfo = document.getElementById('modal-info');
-            
-            // Set modal title
+
+            // Set modal title (not as h2, just the div with class modal-title)
             modalTitle.textContent = room.username;
-            
-            // Set iframe embed - using the cam-only version with the exact format provided
-            modalEmbed.innerHTML = `<iframe src="https://www.cambaddies.net/in/?tour=9oGW&campaign=lRUVu&track=embed&room=${room.username}&disable_sound=1&mobileRedirect=auto&embed_video_only=1" height="480px" width="850px" frameborder="0" class="code" scrolling="no"></iframe>`;
-            
+
+            // Set iframe embed - using responsive approach
+            modalEmbed.innerHTML = `<iframe src="https://www.cambaddies.net/in/?tour=9oGW&campaign=lRUVu&track=embed&room=${room.username}&disable_sound=1&mobileRedirect=auto&embed_video_only=1" frameborder="0" scrolling="no" allowfullscreen></iframe>`;
+
             // Set room info
             modalInfo.innerHTML = `
-                <h3>Room Details</h3>
+                <div class="room-info-title">Room Details</div>
                 <p><strong>Username:</strong> ${room.username}</p>
                 ${room.age ? `<p><strong>Age:</strong> ${room.age} years</p>` : ''}
                 ${room.location ? `<p><strong>Location:</strong> ${room.location}</p>` : ''}
@@ -1375,17 +1475,26 @@
                 <p><strong>Followers:</strong> ${room.num_followers}</p>
                 <p><strong>Time online:</strong> ${formatOnlineTime(room.seconds_online)}</p>
                 ${room.spoken_languages ? `<p><strong>Languages:</strong> ${room.spoken_languages}</p>` : ''}
-                
-                <h4>Tags</h4>
+
+                <div class="room-info-title" style="margin-top: 1rem;">Tags</div>
                 <div class="room-tags">
                     ${room.tags.map(tag => `<span class="room-tag">${tag}</span>`).join('')}
                 </div>
-                
-                <p class="room-subject"><strong>Subject:</strong> ${room.room_subject}</p>
+
+                <p style="margin-top: 1rem;"><strong>Subject:</strong> ${room.room_subject}</p>
             `;
-            
+
             // Show modal
             modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRoomModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+
+            // Clear iframe to stop video
+            document.getElementById('modal-embed').innerHTML = '';
         }
 
         function getGenderText(gender) {
@@ -1401,7 +1510,7 @@
         function formatOnlineTime(seconds) {
             const hours = Math.floor(seconds / 3600);
             const minutes = Math.floor((seconds % 3600) / 60);
-            
+
             if (hours > 0) {
                 return `${hours} hours, ${minutes} minutes`;
             } else {
