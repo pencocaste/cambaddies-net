@@ -868,7 +868,6 @@
 
     // Initialize the application
     document.addEventListener('DOMContentLoaded', function() {
-        try {
         // Get DOM Elements
         const roomsContainer = document.getElementById('rooms-container');
         const roomsLoader = document.getElementById('rooms-loader');
@@ -885,18 +884,21 @@
         const closeModal = document.getElementById('close-modal');
         const canonicalUrl = document.getElementById('canonical-url');
 
-        console.log('DOM loaded, initializing...');
+        // Popular tags by gender - must be defined before handleRoute() is called
+        const popularTags = {
+            f: ['latina', 'asian', 'milf', 'teen', 'bigboobs', 'hairy', 'squirt', 'anal', 'ebony', 'mature'],
+            m: ['muscle', 'bigcock', 'bear', 'uncut', 'twink', 'daddy', 'latino', 'cum', 'bbc', 'fit'],
+            c: ['anal', 'threesome', 'young', 'bbw', 'interracial', 'latina', 'bisexual', 'feet', 'smoke', 'lesbian'],
+            t: ['bigcock', 'asian', 'latina', 'cum', 'anal', 'bigass', 'slim', 'ebony', 'mistress', 'new']
+        };
 
         // First, handle the route
         handleRoute();
-        console.log('Route handled');
 
         // Set up event listeners
         setupEventListeners();
-        console.log('Event listeners set up');
 
         // Initial load
-        console.log('Starting initial load...');
         loadRooms(true);
 
         // Handle URL changes (browser back/forward buttons)
@@ -1044,14 +1046,6 @@
                 });
             });
         }
-
-        // Popular tags by gender
-        const popularTags = {
-            f: ['latina', 'asian', 'milf', 'teen', 'bigboobs', 'hairy', 'squirt', 'anal', 'ebony', 'mature'],
-            m: ['muscle', 'bigcock', 'bear', 'uncut', 'twink', 'daddy', 'latino', 'cum', 'bbc', 'fit'],
-            c: ['anal', 'threesome', 'young', 'bbw', 'interracial', 'latina', 'bisexual', 'feet', 'smoke', 'lesbian'],
-            t: ['bigcock', 'asian', 'latina', 'cum', 'anal', 'bigass', 'slim', 'ebony', 'mistress', 'new']
-        };
 
         function populateTagsDropdown(gender) {
             const tagsDropdown = document.getElementById('tags-dropdown');
@@ -1283,10 +1277,9 @@
             showLoader(reset);
 
             const apiUrl = buildApiUrl();
-            console.log('Fetching rooms from:', apiUrl);
 
             // Fetch data from API
-            fetch(apiUrl, { mode: 'cors' })
+            fetch(apiUrl)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -1294,7 +1287,6 @@
                     return response.json();
                 })
                 .then(data => {
-                    console.log('API response received:', data);
                     hideLoader();
 
                     // Update total rooms count
@@ -1496,11 +1488,6 @@
             } else {
                 return `${minutes} minutes`;
             }
-        }
-
-        } catch (error) {
-            console.error('Initialization error:', error);
-            alert('Error initializing: ' + error.message);
         }
     });
     </script>
