@@ -868,6 +868,7 @@
 
     // Initialize the application
     document.addEventListener('DOMContentLoaded', function() {
+        try {
         // Get DOM Elements
         const roomsContainer = document.getElementById('rooms-container');
         const roomsLoader = document.getElementById('rooms-loader');
@@ -884,13 +885,18 @@
         const closeModal = document.getElementById('close-modal');
         const canonicalUrl = document.getElementById('canonical-url');
 
+        console.log('DOM loaded, initializing...');
+
         // First, handle the route
         handleRoute();
+        console.log('Route handled');
 
         // Set up event listeners
         setupEventListeners();
+        console.log('Event listeners set up');
 
         // Initial load
+        console.log('Starting initial load...');
         loadRooms(true);
 
         // Handle URL changes (browser back/forward buttons)
@@ -1277,9 +1283,10 @@
             showLoader(reset);
 
             const apiUrl = buildApiUrl();
+            console.log('Fetching rooms from:', apiUrl);
 
             // Fetch data from API
-            fetch(apiUrl)
+            fetch(apiUrl, { mode: 'cors' })
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -1287,6 +1294,7 @@
                     return response.json();
                 })
                 .then(data => {
+                    console.log('API response received:', data);
                     hideLoader();
 
                     // Update total rooms count
@@ -1488,6 +1496,11 @@
             } else {
                 return `${minutes} minutes`;
             }
+        }
+
+        } catch (error) {
+            console.error('Initialization error:', error);
+            alert('Error initializing: ' + error.message);
         }
     });
     </script>
