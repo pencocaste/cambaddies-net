@@ -667,10 +667,6 @@ h2.footer-title {
         flex-direction: column;
     }
 
-    .embed-container {
-        padding-bottom: 75%; /* 4:3 for mobile */
-    }
-
     .room-info {
         max-height: none;
     }
