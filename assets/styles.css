@@ -143,6 +143,11 @@ main {
     margin-bottom: 1rem;
     flex-wrap: wrap;
     gap: 0.5rem;
+    width: 100%;
+    position: relative;
+    z-index: 60;
+    background-color: #f8f9fa;
+    padding-bottom: 0.5rem;
 }
 
 .section-title {
