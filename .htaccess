@@ -11,12 +11,12 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # ============================================
-# SEO: Remove trailing slash (except root)
-# Example: /girls/ -> /girls
+# SEO: Add trailing slash (except for files)
+# Example: /girls -> /girls/
 # ============================================
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} (.+)/$
-RewriteRule ^ %1 [L,R=301]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ $1/ [L,R=301]
 
 # ============================================
 # SEO: Force www or non-www (choose one)
