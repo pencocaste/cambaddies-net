@@ -413,7 +413,9 @@ document.addEventListener('DOMContentLoaded', function() {
      * Handle route changes
      */
     function handleRoute() {
-        const path = window.location.pathname;
+        const rawPath = window.location.pathname;
+        // Normalize path by removing trailing slash for comparison
+        const path = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
         // Reset filters
         currentFilters.gender = [];
@@ -424,10 +426,10 @@ document.addEventListener('DOMContentLoaded', function() {
             loadMoreBtn.classList.remove('hidden');
         }
 
-        // Update canonical URL
+        // Update canonical URL (with trailing slash)
         const canonicalUrl = document.getElementById('canonical-url');
         if (canonicalUrl) {
-            canonicalUrl.href = 'https://cambaddies.net' + (path === '/' ? '/' : path);
+            canonicalUrl.href = 'https://cambaddies.net' + (path === '/' ? '/' : path + '/');
         }
 
         // Update navigation active states
@@ -462,12 +464,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateActiveNavigation(path) {
+        // path is already normalized (without trailing slash)
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === path);
+            const linkPath = link.getAttribute('href').replace(/\/$/, '');
+            link.classList.toggle('active', linkPath === path);
         });
 
         document.querySelectorAll('.mobile-gender-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.getAttribute('href') === path);
+            const btnPath = btn.getAttribute('href').replace(/\/$/, '');
+            btn.classList.toggle('active', btnPath === path);
         });
     }
 
