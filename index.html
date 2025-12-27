@@ -154,14 +154,15 @@
         }
 
         main {
-            max-width: 1200px;
+            max-width: 1800px;
             margin: 2rem auto;
             padding: 0 1rem;
+            position: relative;
         }
 
         .page-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
 
         .page-header h1 {
@@ -171,27 +172,34 @@
             letter-spacing: 1px;
         }
 
-        /* Dropdown Filters */
+        /* Featured section with filters overlay */
+        .featured {
+            position: relative;
+        }
+
+        /* Dropdown Filters - positioned over grid */
         .dropdown-filters {
+            position: absolute;
+            top: 0;
+            right: 0;
             display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            gap: 0.5rem;
+            z-index: 50;
+            flex-wrap: nowrap;
         }
 
         .dropdown-filter {
             position: relative;
-            flex: 1;
-            min-width: 200px;
+            min-width: 120px;
         }
 
         .dropdown-filter-btn {
             width: 100%;
-            padding: 1rem 1.5rem;
+            padding: 0.5rem 0.8rem;
             background-color: white;
             border: 1px solid #ddd;
             border-radius: var(--border-radius);
-            font-size: 1rem;
+            font-size: 0.85rem;
             color: var(--text-light);
             cursor: pointer;
             display: flex;
@@ -238,9 +246,10 @@
         }
 
         .dropdown-item {
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1rem;
             cursor: pointer;
             transition: var(--transition);
+            font-size: 0.85rem;
         }
 
         .dropdown-item:hover {
@@ -254,8 +263,8 @@
 
         .rooms-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.45rem;
         }
 
         .room-card {
@@ -334,13 +343,13 @@
         }
 
         .room-details {
-            padding: 1rem;
+            padding: 0.5rem;
         }
 
         .room-title {
             font-weight: bold;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -350,29 +359,29 @@
             display: flex;
             justify-content: space-between;
             color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.3rem;
         }
 
         .room-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
+            gap: 0.3rem;
+            margin-top: 0.3rem;
         }
 
         .room-tag {
             background-color: var(--light-color);
-            padding: 0.2rem 0.5rem;
+            padding: 0.15rem 0.4rem;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
         }
 
         .room-language {
             display: flex;
             align-items: center;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            font-size: 0.75rem;
         }
 
         .room-language svg {
@@ -544,6 +553,35 @@
             margin-top: 1rem;
         }
 
+        /* Start Chat Button */
+        .start-chat-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1rem;
+            background-color: #FF4757;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .start-chat-btn:hover {
+            background-color: #e8414f;
+            transform: scale(1.02);
+        }
+
+        /* Logo link */
+        .logo-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+        }
+
         /* Loader */
         .loader-container {
             display: flex;
@@ -570,7 +608,7 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             .hamburger {
-                display: block;
+                display: none;
             }
 
             .desktop-menu {
@@ -582,41 +620,53 @@
             }
 
             .nav-links {
-                position: fixed;
-                top: 60px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 60px);
-                background-color: var(--primary-color);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                transition: var(--transition);
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                margin: 1rem 0;
+                display: none;
             }
 
             .page-header h1 {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
 
             .dropdown-filters {
-                flex-direction: column;
+                position: relative;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin-bottom: 1rem;
             }
 
             .dropdown-filter {
-                min-width: 100%;
+                flex: 1;
+                min-width: calc(33% - 0.5rem);
+            }
+
+            .dropdown-filter-btn {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.75rem;
             }
 
             .rooms-container {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.3rem;
+            }
+
+            .room-details {
+                padding: 0.4rem;
+            }
+
+            .room-title {
+                font-size: 0.8rem;
+            }
+
+            .room-meta {
+                font-size: 0.65rem;
+            }
+
+            .room-tags {
+                display: none;
+            }
+
+            .room-language {
+                display: none;
             }
 
             .modal-content {
@@ -678,16 +728,18 @@
 <body>
     <header>
         <nav>
-            <div class="logo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"></path>
-                    <path d="M20.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"></path>
-                    <path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"></path>
-                    <path d="M3.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S2 21.33 2 20.5v-5c0-.83.67-1.5 1.5-1.5z"></path>
-                    <path d="M4 4l16 16"></path>
-                </svg>
-                <span>Live Cams</span>
-            </div>
+            <a href="https://cambaddies.net/" class="logo-link">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"></path>
+                        <path d="M20.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"></path>
+                        <path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"></path>
+                        <path d="M3.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S2 21.33 2 20.5v-5c0-.83.67-1.5 1.5-1.5z"></path>
+                        <path d="M4 4l16 16"></path>
+                    </svg>
+                    <span>Live Cams</span>
+                </div>
+            </a>
 
             <!-- Desktop Menu -->
             <ul class="nav-links desktop-menu">
@@ -720,55 +772,55 @@
             <h1 id="page-title">Live Sex Cams</h1>
         </section>
 
-        <!-- Dropdown Filters -->
-        <section class="dropdown-filters">
-            <div class="dropdown-filter">
-                <button class="dropdown-filter-btn" id="region-filter-btn">
-                    <span>Region</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </button>
-                <div class="dropdown-menu" id="region-dropdown">
-                    <div class="dropdown-item selected" data-value="">All Regions</div>
-                    <div class="dropdown-item" data-value="northamerica">North America</div>
-                    <div class="dropdown-item" data-value="southamerica">South America</div>
-                    <div class="dropdown-item" data-value="europe_russia">Europe/Russia</div>
-                    <div class="dropdown-item" data-value="asia">Asia</div>
-                    <div class="dropdown-item" data-value="other">Other</div>
-                </div>
-            </div>
-
-            <div class="dropdown-filter">
-                <button class="dropdown-filter-btn" id="tags-filter-btn">
-                    <span>Popular Tags</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </button>
-                <div class="dropdown-menu" id="tags-dropdown">
-                    <!-- Tags will be populated dynamically based on gender -->
-                </div>
-            </div>
-
-            <div class="dropdown-filter">
-                <button class="dropdown-filter-btn" id="age-filter-btn">
-                    <span>Age</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </button>
-                <div class="dropdown-menu" id="age-dropdown">
-                    <div class="dropdown-item selected" data-value="">All Ages</div>
-                    <div class="dropdown-item" data-value="teen">18-22</div>
-                    <div class="dropdown-item" data-value="young">23-30</div>
-                    <div class="dropdown-item" data-value="milf">31-45</div>
-                    <div class="dropdown-item" data-value="mature">46+</div>
-                </div>
-            </div>
-        </section>
-
         <section class="featured">
+            <!-- Dropdown Filters - positioned over grid -->
+            <div class="dropdown-filters">
+                <div class="dropdown-filter">
+                    <button class="dropdown-filter-btn" id="region-filter-btn">
+                        <span>Region</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu" id="region-dropdown">
+                        <div class="dropdown-item selected" data-value="">All Regions</div>
+                        <div class="dropdown-item" data-value="northamerica">North America</div>
+                        <div class="dropdown-item" data-value="southamerica">South America</div>
+                        <div class="dropdown-item" data-value="europe_russia">Europe/Russia</div>
+                        <div class="dropdown-item" data-value="asia">Asia</div>
+                        <div class="dropdown-item" data-value="other">Other</div>
+                    </div>
+                </div>
+
+                <div class="dropdown-filter">
+                    <button class="dropdown-filter-btn" id="tags-filter-btn">
+                        <span>Popular Tags</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu" id="tags-dropdown">
+                        <!-- Tags will be populated dynamically based on gender -->
+                    </div>
+                </div>
+
+                <div class="dropdown-filter">
+                    <button class="dropdown-filter-btn" id="age-filter-btn">
+                        <span>Age</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu" id="age-dropdown">
+                        <div class="dropdown-item selected" data-value="">All Ages</div>
+                        <div class="dropdown-item" data-value="teen">18-22</div>
+                        <div class="dropdown-item" data-value="young">23-30</div>
+                        <div class="dropdown-item" data-value="milf">31-45</div>
+                        <div class="dropdown-item" data-value="mature">46+</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="section-title" id="rooms-title">Featured Rooms</div>
             <div class="loader-container" id="rooms-loader">
                 <div class="loader"></div>
@@ -799,6 +851,7 @@
                 <div class="embed-container" id="modal-embed">
                     <!-- Iframe will be inserted here -->
                 </div>
+                <a href="#" class="start-chat-btn" id="start-chat-btn" target="_blank">Start Chat with Model</a>
                 <div class="room-info" id="modal-info">
                     <!-- Room info will be inserted here -->
                 </div>
@@ -848,7 +901,7 @@
         hd: null,
         new: null,
         offset: 0,
-        limit: 20
+        limit: 36
     };
     let isLoading = false;
     let allRooms = [];
@@ -918,15 +971,22 @@
                 loadMoreBtn.classList.add('hidden');
             });
 
-            // Infinite scroll listener
+            // Infinite scroll listener - more sensitive, triggers at second-to-last row
             window.addEventListener('scroll', function() {
                 if (!infiniteScrollEnabled || isLoading) return;
 
                 const scrollPosition = window.innerHeight + window.scrollY;
                 const documentHeight = document.documentElement.scrollHeight;
 
-                // Load more when user is 200px from bottom
-                if (scrollPosition >= documentHeight - 200) {
+                // Calculate approximate row height (card height + gap)
+                // On desktop: 6 columns, on mobile: 2 columns
+                const isMobile = window.innerWidth <= 768;
+                const columnsPerRow = isMobile ? 2 : 6;
+                const approximateCardHeight = isMobile ? 200 : 280;
+                const twoRowsHeight = approximateCardHeight * 2;
+
+                // Load more when user is approaching second-to-last row
+                if (scrollPosition >= documentHeight - twoRowsHeight) {
                     if (allRooms.length < totalRooms) {
                         currentFilters.offset += currentFilters.limit;
                         loadRooms(false);
@@ -1428,12 +1488,17 @@
             const modalTitle = document.getElementById('modal-title');
             const modalEmbed = document.getElementById('modal-embed');
             const modalInfo = document.getElementById('modal-info');
+            const startChatBtn = document.getElementById('start-chat-btn');
 
             // Set modal title (not as h2, just the div with class modal-title)
             modalTitle.textContent = room.username;
 
             // Set iframe embed - using responsive approach
             modalEmbed.innerHTML = `<iframe src="https://www.cambaddies.net/in/?tour=9oGW&campaign=lRUVu&track=embed&room=${room.username}&disable_sound=1&mobileRedirect=auto&embed_video_only=1" frameborder="0" scrolling="no" allowfullscreen></iframe>`;
+
+            // Set Start Chat button
+            startChatBtn.textContent = `Start Chat with ${room.username}`;
+            startChatBtn.href = `https://www.cambaddies.net/in/?tour=LQps&campaign=lRUVu&track=default&room=${room.username}`;
 
             // Set room info
             modalInfo.innerHTML = `
