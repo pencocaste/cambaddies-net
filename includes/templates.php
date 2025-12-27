@@ -382,7 +382,7 @@ function renderPage($path, $rooms, $totalRooms) {
 
     $metaTitle = htmlspecialchars($config['meta_title'], ENT_QUOTES, 'UTF-8');
     $metaDescription = htmlspecialchars($config['meta_description'], ENT_QUOTES, 'UTF-8');
-    $canonicalPath = $path === '/' ? '/' : $path;
+    $canonicalPath = $path === '/' ? '/' : $path . '/';
     $canonicalUrl = SITE_URL . $canonicalPath;
 
     // Initial state for JavaScript
