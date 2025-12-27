@@ -1,0 +1,55 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Set base directory
+RewriteBase /
+
+# Force HTTPS (uncomment if needed)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Prevent directory listing
+Options -Indexes
+
+# Protect includes directory
+<IfModule mod_rewrite.c>
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
+
+# Allow access to static assets
+RewriteCond %{REQUEST_URI} ^/assets/ [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Route all other requests to index.php
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Prevent access to sensitive files
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|bak)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
