@@ -213,19 +213,24 @@ function renderFilters($gender = '') {
  */
 function renderHeader($currentPath) {
     $navItems = [
-        '/girls' => 'Girls',
-        '/couples' => 'Couples',
-        '/men' => 'Men',
-        '/trans' => 'Trans',
+        '/girls/' => 'Girls',
+        '/couples/' => 'Couples',
+        '/men/' => 'Men',
+        '/trans/' => 'Trans',
     ];
 
     $desktopLinks = '';
     $mobileButtons = '';
 
+    // Normalize currentPath for comparison
+    $normalizedPath = rtrim($currentPath, '/');
+
     foreach ($navItems as $path => $label) {
-        $activeClass = $currentPath === $path ? 'active' : '';
-        $desktopLinks .= '<li><a href="' . $path . '" class="nav-link ' . $activeClass . '" data-gender="' . substr($path, 1) . '">' . $label . '</a></li>';
-        $mobileButtons .= '<a href="' . $path . '" class="mobile-gender-btn ' . $activeClass . '" data-gender="' . substr($path, 1) . '">' . $label . '</a>';
+        $pathWithoutSlash = rtrim($path, '/');
+        $activeClass = $normalizedPath === $pathWithoutSlash ? 'active' : '';
+        $gender = str_replace('/', '', $pathWithoutSlash);
+        $desktopLinks .= '<li><a href="' . $path . '" class="nav-link ' . $activeClass . '" data-gender="' . $gender . '">' . $label . '</a></li>';
+        $mobileButtons .= '<a href="' . $path . '" class="mobile-gender-btn ' . $activeClass . '" data-gender="' . $gender . '">' . $label . '</a>';
     }
 
     return '
