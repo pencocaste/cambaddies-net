@@ -1,0 +1,683 @@
+:root {
+    --primary-color: #ff4757;
+    --secondary-color: #2f3542;
+    --accent-color: #5352ed;
+    --light-color: #f1f2f6;
+    --dark-color: #2f3542;
+    --success-color: #2ed573;
+    --warning-color: #ffa502;
+    --danger-color: #ff4757;
+    --text-color: #333;
+    --text-light: #999;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.logo svg {
+    margin-right: 0.5rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--light-color);
+    text-decoration: underline;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+}
+
+/* Mobile Gender Buttons */
+.mobile-gender-buttons {
+    display: none;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background-color: var(--secondary-color);
+}
+
+.mobile-gender-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    margin: 0 0.25rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.mobile-gender-btn.active {
+    background-color: var(--accent-color);
+}
+
+main {
+    max-width: 1800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    position: relative;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Featured section with filters overlay */
+.featured {
+    position: relative;
+}
+
+/* Dropdown Filters - positioned over grid */
+.dropdown-filters {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 50;
+    flex-wrap: nowrap;
+}
+
+.dropdown-filter {
+    position: relative;
+    min-width: 120px;
+}
+
+.dropdown-filter-btn {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    color: var(--text-light);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.dropdown-filter-btn:hover {
+    border-color: var(--primary-color);
+}
+
+.dropdown-filter-btn.active {
+    border-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.dropdown-filter-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-filter-btn.open svg {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    box-shadow: var(--box-shadow);
+    z-index: 100;
+    display: none;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.dropdown-menu.open {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.85rem;
+}
+
+.dropdown-item:hover {
+    background-color: var(--light-color);
+}
+
+.dropdown-item.selected {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.rooms-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.45rem;
+}
+
+.room-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    position: relative;
+    cursor: pointer;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.room-thumbnail {
+    position: relative;
+    padding-bottom: 75%; /* 4:3 aspect ratio */
+    background-color: #eee;
+    overflow: hidden;
+}
+
+.room-thumbnail img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.room-card:hover .room-thumbnail img {
+    transform: scale(1.05);
+}
+
+.room-badges {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.badge {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+.badge-hd {
+    background-color: var(--success-color);
+}
+
+.badge-new {
+    background-color: var(--primary-color);
+}
+
+.room-viewers {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.room-viewers svg {
+    margin-right: 5px;
+}
+
+.room-details {
+    padding: 0.5rem;
+}
+
+.room-title {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.room-meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-light);
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
+}
+
+.room-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.3rem;
+}
+
+.room-tag {
+    background-color: var(--light-color);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+}
+
+.room-language {
+    display: flex;
+    align-items: center;
+    margin-top: 0.3rem;
+    font-size: 0.75rem;
+}
+
+.room-language svg {
+    margin-right: 0.3rem;
+}
+
+.load-more {
+    display: block;
+    margin: 2rem auto;
+    padding: 0.8rem 2rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.load-more:hover {
+    background-color: #4240db;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 3rem 1rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.copyright {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: 2% auto;
+    padding: 20px;
+    width: 95%;
+    max-width: 1100px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2100;
+    color: #ff4757;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.close-modal:hover {
+    background-color: #f1f1f1;
+}
+
+.modal-header {
+    margin-bottom: 1rem;
+}
+
+.modal-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.embed-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    background-color: #000;
+    overflow: hidden;
+}
+
+.embed-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.room-info {
+    padding: 1rem;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+}
+
+.room-info-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.room-info p {
+    margin-bottom: 0.5rem;
+}
+
+.room-info .room-tags {
+    margin-top: 1rem;
+}
+
+/* Start Chat Button */
+.start-chat-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: #FF4757;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.start-chat-btn:hover {
+    background-color: #e8414f;
+    transform: scale(1.02);
+}
+
+/* Logo link */
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+/* Loader */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-gender-buttons {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .dropdown-filters {
+        position: relative;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+    }
+
+    .dropdown-filter {
+        flex: 1;
+        min-width: calc(33% - 0.5rem);
+    }
+
+    .dropdown-filter-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+
+    .rooms-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.3rem;
+    }
+
+    .room-details {
+        padding: 0.4rem;
+    }
+
+    .room-title {
+        font-size: 0.8rem;
+    }
+
+    .room-meta {
+        font-size: 0.65rem;
+    }
+
+    .room-tags {
+        display: none;
+    }
+
+    .room-language {
+        display: none;
+    }
+
+    .modal-content {
+        width: 98%;
+        margin: 2% auto;
+        padding: 10px;
+    }
+
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .embed-container {
+        padding-bottom: 75%; /* 4:3 for mobile */
+    }
+
+    .room-info {
+        max-height: none;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.no-rooms-message {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    margin: 2rem 0;
+}
+
+/* Infinite scroll loader */
+.scroll-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.scroll-loader .loader {
+    width: 30px;
+    height: 30px;
+}
