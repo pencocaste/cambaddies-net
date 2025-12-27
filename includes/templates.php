@@ -356,7 +356,6 @@ function renderMainContent($pageConfig, $rooms, $totalRooms) {
 
         <section class="featured">
             <div class="section-header">
-                <div class="section-title" id="rooms-title">' . ($gender ? $title : 'Featured Rooms') . '</div>
                 ' . $filtersHtml . '
             </div>
             <div class="loader-container hidden" id="rooms-loader">
