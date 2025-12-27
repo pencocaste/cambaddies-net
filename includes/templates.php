@@ -275,21 +275,11 @@ function renderFooter() {
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Live Cams</h3>
+                <h2 class="footer-title">Live Cams</h2>
                 <p>The best platform to discover and enjoy live cams from around the world. Explore thousands of real-time broadcasts.</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/girls">Girls</a></li>
-                    <li><a href="/couples">Couples</a></li>
-                    <li><a href="/men">Men</a></li>
-                    <li><a href="/trans">Trans</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Legal</h3>
+                <span class="footer-title">Legal</span>
                 <ul class="footer-links">
                     <li><a href="https://www.cambaddies.net/terms/" rel="nofollow noopener noreferrer" target="_blank">Terms</a></li>
                     <li><a href="https://www.cambaddies.net/2257/" rel="nofollow noopener noreferrer" target="_blank">2257</a></li>

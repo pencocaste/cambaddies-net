@@ -391,9 +391,15 @@ footer {
     gap: 2rem;
 }
 
-.footer-section h3 {
+.footer-title {
+    display: block;
     margin-bottom: 1rem;
     font-size: 1.2rem;
+    font-weight: bold;
+}
+
+h2.footer-title {
+    margin: 0 0 1rem 0;
 }
 
 .footer-links {
