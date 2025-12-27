@@ -130,16 +130,29 @@ main {
     letter-spacing: 1px;
 }
 
-/* Featured section with filters overlay */
+/* Featured section with filters */
 .featured {
     position: relative;
 }
 
-/* Dropdown Filters - positioned over grid */
+/* Section header with title and filters */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Dropdown Filters - positioned next to title */
 .dropdown-filters {
-    position: absolute;
-    top: 0;
-    right: 0;
     display: flex;
     gap: 0.5rem;
     z-index: 50;
@@ -585,11 +598,15 @@ footer {
         font-size: 1.5rem;
     }
 
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
     .dropdown-filters {
-        position: relative;
         flex-direction: row;
         flex-wrap: wrap;
-        margin-bottom: 1rem;
+        width: 100%;
     }
 
     .dropdown-filter {
