@@ -163,6 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         currentFilters.tag.push(value);
                     }
 
+                    console.log('Age filter selected:', value);
+                    console.log('Current tags:', currentFilters.tag);
+
                     closeDropdown(ageBtn, ageDropdown);
                     resetAndLoad();
                 });
@@ -522,6 +525,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const apiUrl = `${API_URL}?${params.toString()}`;
+        console.log('Fetching API:', apiUrl);
 
         fetch(apiUrl)
             .then(response => {
