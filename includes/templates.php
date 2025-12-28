@@ -59,8 +59,9 @@ function renderRoomCard($room, $index = 0) {
             </div>';
     }
 
-    // Room data as JSON for JavaScript
-    $roomDataJson = htmlspecialchars(json_encode($room), ENT_QUOTES, 'UTF-8');
+    // Room data as JSON for JavaScript (sanitized to remove external URLs)
+    $sanitizedRoom = sanitizeRoomData($room);
+    $roomDataJson = htmlspecialchars(json_encode($sanitizedRoom), ENT_QUOTES, 'UTF-8');
 
     // LCP optimization: First N images should not be lazy loaded and should have high priority
     $isLcpImage = $index < LCP_IMAGE_COUNT;
