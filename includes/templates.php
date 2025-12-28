@@ -321,7 +321,7 @@ function renderModal() {
                 <div class="embed-container" id="modal-embed">
                     <!-- Iframe will be inserted here -->
                 </div>
-                <a href="#" class="start-chat-btn" id="start-chat-btn" target="_blank">Start Chat with Model</a>
+                <a href="#" class="start-chat-btn" id="start-chat-btn" rel="nofollow noopener noreferrer" target="_blank">Start Chat with Model</a>
                 <div class="room-info" id="modal-info">
                     <!-- Room info will be inserted here -->
                 </div>
