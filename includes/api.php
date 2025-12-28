@@ -246,3 +246,33 @@ function getGenderText($gender) {
     ];
     return $map[$gender] ?? $gender;
 }
+
+/**
+ * Sanitize room data for client-side use
+ * Removes external URLs (chaturbate.com) and unnecessary fields
+ * This keeps only the fields needed for the modal display
+ *
+ * @param array $room Room data from API
+ * @return array Sanitized room data
+ */
+function sanitizeRoomData($room) {
+    // Only include fields needed for display
+    // Excludes: chat_room_url, chat_room_url_revshare, iframe_embed, iframe_embed_revshare
+    return [
+        'username' => $room['username'] ?? '',
+        'display_name' => $room['display_name'] ?? '',
+        'gender' => $room['gender'] ?? '',
+        'age' => $room['age'] ?? 0,
+        'location' => $room['location'] ?? '',
+        'country' => $room['country'] ?? '',
+        'spoken_languages' => $room['spoken_languages'] ?? '',
+        'tags' => $room['tags'] ?? [],
+        'room_subject' => $room['room_subject'] ?? '',
+        'num_users' => $room['num_users'] ?? 0,
+        'num_followers' => $room['num_followers'] ?? 0,
+        'seconds_online' => $room['seconds_online'] ?? 0,
+        'is_hd' => $room['is_hd'] ?? false,
+        'is_new' => $room['is_new'] ?? false,
+        'image_url_360x270' => $room['image_url_360x270'] ?? '',
+    ];
+}

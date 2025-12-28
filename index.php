@@ -114,5 +114,10 @@ function handleApiRequest() {
         return;
     }
 
+    // Sanitize room data to remove external URLs (chaturbate.com)
+    if (isset($response['results']) && is_array($response['results'])) {
+        $response['results'] = array_map('sanitizeRoomData', $response['results']);
+    }
+
     echo json_encode($response);
 }
