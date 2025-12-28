@@ -7,12 +7,19 @@ require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/api.php';
 
 /**
+ * Number of images to load with high priority (above the fold)
+ * These will NOT have lazy loading and will have fetchpriority="high"
+ */
+const LCP_IMAGE_COUNT = 6;
+
+/**
  * Render a single room card
  *
  * @param array $room Room data from API
+ * @param int $index Position index of the card (0-based)
  * @return string HTML for room card
  */
-function renderRoomCard($room) {
+function renderRoomCard($room, $index = 0) {
     $username = htmlspecialchars($room['username'] ?? '', ENT_QUOTES, 'UTF-8');
     $imageUrl = htmlspecialchars($room['image_url_360x270'] ?? '', ENT_QUOTES, 'UTF-8');
     $age = intval($room['age'] ?? 0);
@@ -55,10 +62,16 @@ function renderRoomCard($room) {
     // Room data as JSON for JavaScript
     $roomDataJson = htmlspecialchars(json_encode($room), ENT_QUOTES, 'UTF-8');
 
+    // LCP optimization: First N images should not be lazy loaded and should have high priority
+    $isLcpImage = $index < LCP_IMAGE_COUNT;
+    $imgAttributes = $isLcpImage
+        ? 'fetchpriority="high"'
+        : 'loading="lazy"';
+
     return '
         <div class="room-card fade-in" data-username="' . $username . '" data-room=\'' . $roomDataJson . '\'>
             <div class="room-thumbnail">
-                <img src="' . $imageUrl . '" alt="' . $username . ' preview" loading="lazy">
+                <img src="' . $imageUrl . '" alt="' . $username . ' preview" ' . $imgAttributes . '>
                 <div class="room-badges">
                     ' . $badges . '
                 </div>
@@ -92,8 +105,8 @@ function renderRoomCard($room) {
  */
 function renderRoomCards($rooms) {
     $html = '';
-    foreach ($rooms as $room) {
-        $html .= renderRoomCard($room);
+    foreach ($rooms as $index => $room) {
+        $html .= renderRoomCard($room, $index);
     }
     return $html;
 }
