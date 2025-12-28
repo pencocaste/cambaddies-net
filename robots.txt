@@ -1,0 +1,29 @@
+# robots.txt for cambaddies.net
+
+# Allow all crawlers
+User-agent: *
+
+# Allow crawling of main pages
+Allow: /
+Allow: /girls/
+Allow: /couples/
+Allow: /men/
+Allow: /trans/
+
+# Block internal directories and files
+Disallow: /includes/
+Disallow: /assets/
+Disallow: /api/
+
+# Block sensitive files
+Disallow: /*.php$
+Disallow: /*.ini$
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.bak$
+
+# Block query strings (duplicate content)
+Disallow: /*?*
+
+# Sitemap location
+Sitemap: https://cambaddies.net/sitemap.xml
