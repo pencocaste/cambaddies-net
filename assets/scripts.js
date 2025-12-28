@@ -139,36 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
             setupTagsDropdownItems();
         }
 
-        // Age filter
-        const ageBtn = document.getElementById('age-filter-btn');
-        const ageDropdown = document.getElementById('age-dropdown');
-
-        if (ageBtn && ageDropdown) {
-            ageBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggleDropdown(ageBtn, ageDropdown);
-            });
-
-            ageDropdown.querySelectorAll('.dropdown-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    const value = this.getAttribute('data-value');
-                    selectDropdownItem(ageDropdown, this);
-                    ageBtn.querySelector('span').textContent = value ? this.textContent : 'Age';
-                    ageBtn.classList.toggle('active', !!value);
-
-                    // Remove age tags and add new one
-                    const ageTags = ['teen', 'young', 'milf', 'mature'];
-                    currentFilters.tag = currentFilters.tag.filter(t => !ageTags.includes(t));
-                    if (value) {
-                        currentFilters.tag.push(value);
-                    }
-
-                    closeDropdown(ageBtn, ageDropdown);
-                    resetAndLoad();
-                });
-            });
-        }
-
         // Close dropdowns when clicking outside
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.dropdown-filter')) {
@@ -195,12 +165,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 tagsBtn.querySelector('span').textContent = value ? this.textContent : 'Popular Tags';
                 tagsBtn.classList.toggle('active', !!value);
 
-                // Remove non-age tags and add new one
-                const ageTags = ['teen', 'young', 'milf', 'mature'];
-                currentFilters.tag = currentFilters.tag.filter(t => ageTags.includes(t));
-                if (value) {
-                    currentFilters.tag.push(value);
-                }
+                // Set tag filter (single tag at a time)
+                currentFilters.tag = value ? [value] : [];
 
                 closeDropdown(tagsBtn, tagsDropdown);
                 resetAndLoad();

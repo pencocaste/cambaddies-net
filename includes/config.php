@@ -68,12 +68,3 @@ $REGIONS = [
     'asia' => 'Asia',
     'other' => 'Other',
 ];
-
-// Age mappings
-$AGE_TAGS = [
-    '' => 'All Ages',
-    'teen' => '18-22',
-    'young' => '23-30',
-    'milf' => '31-45',
-    'mature' => '46+',
-];
