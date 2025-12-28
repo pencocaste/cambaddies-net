@@ -103,21 +103,22 @@ function fetchRooms($params = []) {
         $queryParams['region'] = $params['region'];
     }
 
-    // Add tags (max 5)
-    if (!empty($params['tags']) && is_array($params['tags'])) {
-        $tags = array_slice($params['tags'], 0, 5);
-        foreach ($tags as $tag) {
-            $queryParams['tag'][] = $tag;
-        }
-    }
-
     // Add HD filter
     if (isset($params['hd']) && $params['hd']) {
         $queryParams['hd'] = 'true';
     }
 
-    // Build URL
+    // Build URL with proper handling of array parameters (tags)
+    // Chaturbate API expects: tag=foo&tag=bar (not tag[0]=foo&tag[1]=bar)
     $url = API_URL . '?' . http_build_query($queryParams);
+
+    // Add tags separately to avoid http_build_query adding array indices
+    if (!empty($params['tags']) && is_array($params['tags'])) {
+        $tags = array_slice($params['tags'], 0, 5);
+        foreach ($tags as $tag) {
+            $url .= '&tag=' . urlencode($tag);
+        }
+    }
 
     // Make API request
     $response = makeApiRequest($url);
