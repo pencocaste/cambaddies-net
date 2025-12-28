@@ -143,20 +143,13 @@ function getPageConfig($path) {
  * @return string HTML for filters
  */
 function renderFilters($gender = '') {
-    global $REGIONS, $AGE_TAGS, $POPULAR_TAGS;
+    global $REGIONS, $POPULAR_TAGS;
 
     // Region dropdown
     $regionOptions = '';
     foreach ($REGIONS as $value => $label) {
         $selected = $value === '' ? 'selected' : '';
         $regionOptions .= '<div class="dropdown-item ' . $selected . '" data-value="' . htmlspecialchars($value, ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '</div>';
-    }
-
-    // Age dropdown
-    $ageOptions = '';
-    foreach ($AGE_TAGS as $value => $label) {
-        $selected = $value === '' ? 'selected' : '';
-        $ageOptions .= '<div class="dropdown-item ' . $selected . '" data-value="' . htmlspecialchars($value, ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '</div>';
     }
 
     // Tags dropdown - based on gender
@@ -202,18 +195,6 @@ function renderFilters($gender = '') {
                 </button>
                 <div class="dropdown-menu" id="tags-dropdown">
                     ' . $tagOptions . '
-                </div>
-            </div>
-
-            <div class="dropdown-filter">
-                <button class="dropdown-filter-btn" id="age-filter-btn">
-                    <span>Age</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </button>
-                <div class="dropdown-menu" id="age-dropdown">
-                    ' . $ageOptions . '
                 </div>
             </div>
         </div>';
