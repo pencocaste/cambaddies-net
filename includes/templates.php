@@ -237,16 +237,7 @@ function renderHeader($currentPath) {
     <header>
         <nav>
             <a href="https://cambaddies.net/" class="logo-link">
-                <div class="logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"></path>
-                        <path d="M20.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"></path>
-                        <path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"></path>
-                        <path d="M3.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S2 21.33 2 20.5v-5c0-.83.67-1.5 1.5-1.5z"></path>
-                        <path d="M4 4l16 16"></path>
-                    </svg>
-                    <span>Live Cams</span>
-                </div>
+                <img src="/assets/images/cambaddies-logotype.webp" alt="cambaddies logo" width="198" height="33" class="logo-img">
             </a>
 
             <!-- Desktop Menu -->
@@ -412,6 +403,10 @@ function renderPage($path, $rooms, $totalRooms) {
     <meta name="description" content="' . $metaDescription . '">
     <meta name="keywords" content="live cams, sex cams, webcams, live video chat, adult webcams">
     <title>' . $metaTitle . '</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="250x250" href="/assets/images/cambaddies-favicon.png">
+    <link rel="apple-touch-icon" href="/assets/images/cambaddies-favicon.png">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="' . $canonicalUrl . '" id="canonical-url">

@@ -46,16 +46,6 @@ nav {
     padding: 0 1rem;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-}
-
-.logo svg {
-    margin-right: 0.5rem;
-}
 
 .nav-links {
     display: flex;
@@ -557,6 +547,11 @@ h2.footer-title {
     color: inherit;
     display: flex;
     align-items: center;
+}
+
+.logo-img {
+    height: 33px;
+    width: auto;
 }
 
 /* Loader */
