@@ -53,8 +53,8 @@ if ($pageConfig['gender']) {
     $apiParams['gender'] = $pageConfig['gender'];
 }
 
-// Fetch initial rooms from API
-$apiResponse = fetchRooms($apiParams);
+// Fetch initial rooms from API (with cache)
+$apiResponse = fetchRoomsWithCache($apiParams);
 
 $rooms = [];
 $totalRooms = 0;
@@ -62,6 +62,11 @@ $totalRooms = 0;
 if ($apiResponse !== null) {
     $rooms = $apiResponse['results'] ?? [];
     $totalRooms = $apiResponse['count'] ?? 0;
+}
+
+// Occasionally clean up old cache files (1% chance per request)
+if (mt_rand(1, 100) === 1) {
+    clearExpiredCache();
 }
 
 // Render and output the page
@@ -100,8 +105,8 @@ function handleApiRequest() {
         $params['hd'] = $_GET['hd'] === 'true' || $_GET['hd'] === '1';
     }
 
-    // Fetch rooms
-    $response = fetchRooms($params);
+    // Fetch rooms (with cache)
+    $response = fetchRoomsWithCache($params);
 
     if ($response === null) {
         http_response_code(500);

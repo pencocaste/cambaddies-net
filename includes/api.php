@@ -5,8 +5,74 @@
 
 require_once __DIR__ . '/config.php';
 
+// Cache configuration
+define('CACHE_DIR', sys_get_temp_dir() . '/cambaddies_cache');
+define('CACHE_TTL', 60); // 60 seconds
+
 /**
- * Fetch rooms from Chaturbate API
+ * Fetch rooms with caching
+ *
+ * @param array $params Parameters for the API call
+ * @param int $ttl Cache time-to-live in seconds
+ * @return array|null API response or null on error
+ */
+function fetchRoomsWithCache($params = [], $ttl = CACHE_TTL) {
+    // Create cache directory if it doesn't exist
+    if (!is_dir(CACHE_DIR)) {
+        mkdir(CACHE_DIR, 0755, true);
+    }
+
+    // Generate cache key based on parameters (excluding client_ip for shared cache)
+    $cacheParams = $params;
+    unset($cacheParams['client_ip']); // Don't include IP in cache key
+    $cacheKey = md5(serialize($cacheParams));
+    $cacheFile = CACHE_DIR . "/rooms_{$cacheKey}.json";
+
+    // Check if valid cache exists
+    if (file_exists($cacheFile)) {
+        $fileAge = time() - filemtime($cacheFile);
+        if ($fileAge < $ttl) {
+            $cached = file_get_contents($cacheFile);
+            $data = json_decode($cached, true);
+            if ($data !== null) {
+                return $data;
+            }
+        }
+    }
+
+    // Cache miss or expired - fetch from API
+    $data = fetchRooms($params);
+
+    // Store in cache if successful
+    if ($data !== null) {
+        file_put_contents($cacheFile, json_encode($data), LOCK_EX);
+    }
+
+    return $data;
+}
+
+/**
+ * Clear expired cache files
+ *
+ * @param int $maxAge Maximum age in seconds (default: 5 minutes)
+ */
+function clearExpiredCache($maxAge = 300) {
+    if (!is_dir(CACHE_DIR)) {
+        return;
+    }
+
+    $files = glob(CACHE_DIR . '/rooms_*.json');
+    $now = time();
+
+    foreach ($files as $file) {
+        if ($now - filemtime($file) > $maxAge) {
+            @unlink($file);
+        }
+    }
+}
+
+/**
+ * Fetch rooms from Chaturbate API (without cache)
  *
  * @param array $params Parameters for the API call
  * @return array|null API response or null on error
