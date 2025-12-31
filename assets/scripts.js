@@ -284,12 +284,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (modalEmbed) {
-            modalEmbed.innerHTML = `<iframe src="https://www.cambaddies.net/in/?tour=${AFFILIATE_TOUR_EMBED}&campaign=${AFFILIATE_CAMPAIGN}&track=embed&room=${room.username}&disable_sound=1&mobileRedirect=auto&embed_video_only=1" frameborder="0" scrolling="no" allowfullscreen></iframe>`;
+            modalEmbed.innerHTML = `<iframe src="https://www.cambaddies.net/in/?tour=${AFFILIATE_TOUR_EMBED}&campaign=${AFFILIATE_CAMPAIGN}&track=embedCamBAD&room=${room.username}&disable_sound=1&mobileRedirect=auto&embed_video_only=1" frameborder="0" scrolling="no" allowfullscreen></iframe>`;
         }
 
         if (startChatBtn) {
             startChatBtn.textContent = `Start Chat with ${room.username}`;
-            startChatBtn.href = `https://www.cambaddies.net/in/?tour=${AFFILIATE_TOUR_CHAT}&campaign=${AFFILIATE_CAMPAIGN}&track=default&room=${room.username}`;
+            startChatBtn.href = `https://www.cambaddies.net/in/?tour=${AFFILIATE_TOUR_CHAT}&campaign=${AFFILIATE_CAMPAIGN}&track=StarCamBAD&room=${room.username}`;
         }
 
         if (modalInfo) {
