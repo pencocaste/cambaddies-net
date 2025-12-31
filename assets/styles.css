@@ -76,6 +76,32 @@ nav {
     color: white;
 }
 
+/* Register Buttons */
+.register-btn {
+    background-color: #2F3542;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.register-btn:hover {
+    background-color: #3d4452;
+    transform: scale(1.02);
+}
+
+.desktop-register {
+    display: inline-block;
+    margin-left: 1.5rem;
+}
+
+.mobile-register {
+    display: none;
+}
+
 /* Mobile Gender Buttons */
 .mobile-gender-buttons {
     display: none;
@@ -593,6 +619,16 @@ h2.footer-title {
 
     .nav-links {
         display: none;
+    }
+
+    .desktop-register {
+        display: none;
+    }
+
+    .mobile-register {
+        display: inline-block;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
     }
 
     .page-header h1 {
