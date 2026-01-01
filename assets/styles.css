@@ -77,28 +77,31 @@ nav {
 }
 
 /* Register Buttons */
-.register-btn {
-    background-color: #2F3542;
-    color: white;
+nav a.register-btn {
+    background-color: #2F3542 !important;
+    color: white !important;
     font-weight: bold;
-    text-decoration: none;
+    text-decoration: none !important;
     padding: 0.5rem 1rem;
     border-radius: 6px;
     transition: var(--transition);
     white-space: nowrap;
+    display: inline-block;
 }
 
-.register-btn:hover {
-    background-color: #3d4452;
+nav a.register-btn:hover {
+    background-color: #3d4452 !important;
+    color: white !important;
+    text-decoration: none !important;
     transform: scale(1.02);
 }
 
-.desktop-register {
+nav a.desktop-register {
     display: inline-block;
     margin-left: 1.5rem;
 }
 
-.mobile-register {
+nav a.mobile-register {
     display: none;
 }
 
@@ -621,12 +624,12 @@ h2.footer-title {
         display: none;
     }
 
-    .desktop-register {
-        display: none;
+    nav a.desktop-register {
+        display: none !important;
     }
 
-    .mobile-register {
-        display: inline-block;
+    nav a.mobile-register {
+        display: inline-block !important;
         padding: 0.4rem 0.8rem;
         font-size: 0.85rem;
     }
