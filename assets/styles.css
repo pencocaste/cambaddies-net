@@ -78,7 +78,24 @@ nav {
 
 /* Register Buttons */
 .register-btn {
+    background-color: #2F3542;
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 25px;
+    display: inline-block;
+    border: none;
     transition: all 0.3s ease;
+}
+
+.desktop-register {
+    padding: 10px 20px;
+    margin-left: 1.5rem;
+}
+
+.mobile-register {
+    display: none;
+    padding: 8px 16px;
 }
 
 .register-btn:hover {
@@ -86,7 +103,7 @@ nav {
     transform: scale(1.05);
 }
 
-/* Mobile button hidden by default (inline style), desktop button visible */
+/* Mobile button hidden by default; shown via media query */
 
 /* Mobile Gender Buttons */
 .mobile-gender-buttons {
