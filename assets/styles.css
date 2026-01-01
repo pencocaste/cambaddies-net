@@ -77,37 +77,16 @@ nav {
 }
 
 /* Register Buttons */
-header nav a.register-btn.desktop-register,
-header nav a.register-btn.mobile-register {
-    background-color: #2F3542 !important;
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    text-decoration: none !important;
-    padding: 10px 20px !important;
-    border-radius: 25px !important;
-    transition: var(--transition);
-    white-space: nowrap;
-    font-size: 14px;
-    letter-spacing: 0.5px;
+.register-btn {
+    transition: all 0.3s ease;
 }
 
-header nav a.register-btn.desktop-register:hover,
-header nav a.register-btn.mobile-register:hover {
+.register-btn:hover {
     background-color: #3d4452 !important;
-    color: #ffffff !important;
-    text-decoration: none !important;
     transform: scale(1.05);
 }
 
-/* Desktop: show desktop button, hide mobile button */
-header nav a.register-btn.desktop-register {
-    display: inline-block !important;
-    margin-left: 1.5rem;
-}
-
-header nav a.register-btn.mobile-register {
-    display: none !important;
-}
+/* Mobile button hidden by default (inline style), desktop button visible */
 
 /* Mobile Gender Buttons */
 .mobile-gender-buttons {
@@ -629,14 +608,12 @@ h2.footer-title {
     }
 
     /* Mobile: hide desktop button, show mobile button */
-    header nav a.register-btn.desktop-register {
+    .desktop-register {
         display: none !important;
     }
 
-    header nav a.register-btn.mobile-register {
+    .mobile-register {
         display: inline-block !important;
-        padding: 8px 16px !important;
-        font-size: 12px !important;
     }
 
     .page-header h1 {
