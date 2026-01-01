@@ -240,11 +240,11 @@ function renderHeader($currentPath) {
                 ' . $desktopLinks . '
             </ul>
 
-            <!-- Desktop Register Button -->
-            <a href="https://www.cambaddies.net/accounts/register/?track=CambaddiesCFA" class="register-btn desktop-register" rel="nofollow noreferrer noopener" target="_blank">CREATE FREE ACCOUNT</a>
+            <!-- Desktop Register Button (hidden on mobile via media query) -->
+            <a href="https://www.cambaddies.net/accounts/register/?track=CambaddiesCFA" class="register-btn desktop-register" rel="nofollow noreferrer noopener" target="_blank" style="background-color:#2F3542;color:#fff;font-weight:700;text-decoration:none;padding:10px 20px;border-radius:25px;margin-left:1.5rem;">CREATE FREE ACCOUNT</a>
 
-            <!-- Mobile Register Button -->
-            <a href="https://www.cambaddies.net/accounts/register/?track=CambaddiesJoinFree" class="register-btn mobile-register" rel="nofollow noreferrer noopener" target="_blank">JOIN FREE</a>
+            <!-- Mobile Register Button (hidden on desktop, shown on mobile) -->
+            <a href="https://www.cambaddies.net/accounts/register/?track=CambaddiesJoinFree" class="register-btn mobile-register" rel="nofollow noreferrer noopener" target="_blank" style="background-color:#2F3542;color:#fff;font-weight:700;text-decoration:none;padding:8px 16px;border-radius:25px;display:none;">JOIN FREE</a>
 
             <button class="hamburger">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
